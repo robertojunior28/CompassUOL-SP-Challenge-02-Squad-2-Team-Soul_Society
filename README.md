@@ -1,1 +1,0 @@
-# CompassUOL-SP-Challenge-02-Squad-2-Team-Soul_Society
