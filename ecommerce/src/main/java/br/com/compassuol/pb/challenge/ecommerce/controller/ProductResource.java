@@ -46,7 +46,7 @@ public class ProductResource {
         existingProduct.setDescription(updatedProduct.getDescription());
 
 
-        return service.save(existingProduct);
+        return service.savebyId(existingProduct);
     }
 
     @DeleteMapping("/v1/products/{id}")

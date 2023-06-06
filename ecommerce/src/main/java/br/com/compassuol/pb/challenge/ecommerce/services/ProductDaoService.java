@@ -53,7 +53,7 @@ public class ProductDaoService {
         throw new NoSuchElementException("Product not found with ID: " + id);
     }
 
-    public Product save(Product product) {
+    public Product savebyId(Product product) {
         if (product.getProductId() == null){
             product.setProductId(++productsCount);
             products.add(product);
