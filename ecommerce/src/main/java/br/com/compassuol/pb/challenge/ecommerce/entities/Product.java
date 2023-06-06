@@ -34,6 +34,10 @@ public class Product {
         this.description = description;
     }
 
+    public Product() {
+
+    }
+
     public Integer getProductId() {
         return productId;
     }
