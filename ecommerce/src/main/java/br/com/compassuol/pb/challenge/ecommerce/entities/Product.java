@@ -14,7 +14,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long productId;
+    private Integer productId;
 
     @NotNull
     @Size(min = 3)
@@ -27,11 +27,18 @@ public class Product {
     @Size(min = 3)
     private String description;
 
-    public Long getProductId() {
+    public Product(Integer productId, String name, BigDecimal price, String description) {
+        this.productId = productId;
+        this.name = name;
+        this.price = price;
+        this.description = description;
+    }
+
+    public Integer getProductId() {
         return productId;
     }
 
-    public void setProductId(Long productId) {
+    public void setProductId(Integer productId) {
         this.productId = productId;
     }
 
@@ -57,5 +64,15 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productId=" + productId +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", description='" + description + '\'' +
+                '}';
     }
 }
