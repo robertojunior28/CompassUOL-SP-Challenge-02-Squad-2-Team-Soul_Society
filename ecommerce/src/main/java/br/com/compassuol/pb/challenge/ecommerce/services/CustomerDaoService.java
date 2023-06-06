@@ -1,12 +1,13 @@
 package br.com.compassuol.pb.challenge.ecommerce.services;
 
 import br.com.compassuol.pb.challenge.ecommerce.entities.Customer;
-import br.com.compassuol.pb.challenge.ecommerce.entities.Product;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class CustomerDaoService {
 
     private static List<Customer> customers = new ArrayList<>();
