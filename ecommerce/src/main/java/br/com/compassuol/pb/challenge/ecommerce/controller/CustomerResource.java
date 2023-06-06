@@ -12,6 +12,6 @@ public class CustomerResource {
 
     private final CustomerDaoService service;
 
-    public CustomerResource(CustomerDaoService service) {this.service = service
+    public CustomerResource(CustomerDaoService service) {this.service = service; }
 
 }
