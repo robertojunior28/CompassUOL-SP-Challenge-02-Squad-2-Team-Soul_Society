@@ -31,4 +31,33 @@ public class ProductDaoService {
         }
         throw new NoSuchElementException("Product not found with ID: " + id);
     }
+
+    public Product updateProduct(Integer id,Product updatedProduct){
+        for (Product product : products){
+            if (product.getProductId().equals(id)){
+                product.setName(updatedProduct.getName());
+                product.setPrice(updatedProduct.getPrice());
+                product.setDescription(updatedProduct.getDescription());
+                return product;
+            }
+        }
+        throw new NoSuchElementException("Product not found with ID: " + id);
+    }
+
+    public Product save(Product product) {
+        if (product.getProductId() == null){
+            product.setProductId(++productsCount);
+            products.add(product);
+        }else{
+            for (int i = 0; i < products.size(); i ++) {
+                if (products.get(i).getProductId().equals(product.getProductId())){
+                    products.set(i, product);
+                    return product;
+                }
+            }
+            throw new NoSuchElementException("Product not found with ID: " + product.getProductId());
+        }
+        return product;
+    }
+
 }

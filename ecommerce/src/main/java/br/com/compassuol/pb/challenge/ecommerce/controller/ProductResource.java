@@ -2,10 +2,10 @@ package br.com.compassuol.pb.challenge.ecommerce.controller;
 
 import br.com.compassuol.pb.challenge.ecommerce.entities.Product;
 import br.com.compassuol.pb.challenge.ecommerce.services.ProductDaoService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -28,5 +28,22 @@ public class ProductResource {
     @GetMapping("/v1/products/{id}")
     public Product retrieveProductById(@PathVariable Integer id){
         return service.findById(id);
+    }
+
+    @PutMapping("/v1/products/{id}")
+    public Product updateProduct(@PathVariable Integer id, @RequestBody Product updatedProduct){
+        Product existingProduct = service.findById(id);
+
+        if (existingProduct == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found");
+
+        }
+
+        existingProduct.setName(updatedProduct.getName());
+        existingProduct.setPrice(updatedProduct.getPrice());
+        existingProduct.setDescription(updatedProduct.getDescription());
+
+
+        return service.save(existingProduct);
     }
 }
