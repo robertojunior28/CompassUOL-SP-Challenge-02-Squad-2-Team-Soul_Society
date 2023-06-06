@@ -2,7 +2,9 @@ package br.com.compassuol.pb.challenge.ecommerce.controller;
 
 import br.com.compassuol.pb.challenge.ecommerce.entities.Product;
 import br.com.compassuol.pb.challenge.ecommerce.services.ProductDaoService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -20,5 +22,11 @@ public class ProductResource {
     @GetMapping("/v1/products")
     public List<Product> retrieveAllProducts() {
         return service.findAll();
+    }
+
+
+    @GetMapping("/v1/products/{id}")
+    public Product retrieveProductById(@PathVariable Integer id){
+        return service.findById(id);
     }
 }
