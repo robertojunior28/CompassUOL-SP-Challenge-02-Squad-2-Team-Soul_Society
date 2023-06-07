@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.Constraint;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -22,8 +23,8 @@ public class Customer {
     private String name;
 
     @NotNull
-    @CPF(message = "CPF inválido")
-    @UniqueElements
+    //@CPF(message = "CPF inválido")
+    //@UniqueElements
     private String cpf;
 
     @Email
