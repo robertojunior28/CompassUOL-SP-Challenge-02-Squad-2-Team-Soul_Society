@@ -14,7 +14,7 @@ public class CustomerController {
     private CustomerRepository customerRepository;
     
     @GetMapping("/v1/products/{id}")
-    public Product retrieveProductById(@PathVariable Integer id){
+    public Customer retrieveProductById(@PathVariable Integer id){
         return service.findById(id);
     }
     
