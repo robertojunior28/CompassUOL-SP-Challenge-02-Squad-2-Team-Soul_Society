@@ -9,9 +9,11 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
      @Test
      public void ValidCustomer(){
          Customer customer = new Customer();
-         customer.setName();
-         customer.setCpf();
-         customer.setEmail();
-         customer.setActive();
+         customer.setName("Customer A");
+         customer.setCpf("000.000.000-00");
+         customer.setEmail("estagio@compass.com");
+         customer.setActive(true);
+
+         System.out.println(customer.getCustomerId());
      }
 }
