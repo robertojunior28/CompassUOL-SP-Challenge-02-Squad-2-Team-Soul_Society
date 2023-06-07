@@ -13,11 +13,11 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-public class ProductResource {
+public class ProductController {
 
     private final ProductDaoService service;
 
-    public ProductResource(ProductDaoService service) {
+    public ProductController(ProductDaoService service) {
         this.service = service;
     }
 

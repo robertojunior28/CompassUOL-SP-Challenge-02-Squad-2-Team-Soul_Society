@@ -2,14 +2,15 @@ package br.com.compassuol.pb.challenge.ecommerce.entities;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
- @DataJpaTest
+@DataJpaTest
  class CustomersTest {
 
      @Test
-     public void ValidCustomer(){
+     public void testValidCustomer(){
          Customer customer = new Customer();
          customer.setName("Customer A");
          customer.setCpf("000.000.000-00");
