@@ -13,13 +13,17 @@ public class CustomerController {
     @Autowired
     private CustomerRepository customerRepository;
 
-    @PostMapping("v1/customers")
+
+
+
+
+    @PostMapping("/v1/customers")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Customer createCustomer(@RequestBody Customer customer){
         return customerRepository.save(customer);
     }
 
-    @PutMapping("v1/customers/{id}")
+    @PutMapping("/v1/customers/{id}")
     public Customer updateCustomer(@PathVariable Integer id, @RequestBody Customer customer ){
         var customerOptional = customerRepository.findById(id);
         if(customerOptional.isEmpty()){
