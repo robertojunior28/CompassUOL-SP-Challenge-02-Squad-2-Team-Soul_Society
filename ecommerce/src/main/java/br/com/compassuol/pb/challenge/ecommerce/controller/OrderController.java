@@ -11,7 +11,8 @@ public class OrderController {
 
     private final OrderDaoService service;
 
-    public OrderController(OrderDaoService) {this.service = service;}
+    public OrderController(OrderDaoService service) {
+        this.service = service;}
 
     @GetMapping("/v1/orders")
     public List<Order> retrieveAllOrders() {return service.findAll();}
