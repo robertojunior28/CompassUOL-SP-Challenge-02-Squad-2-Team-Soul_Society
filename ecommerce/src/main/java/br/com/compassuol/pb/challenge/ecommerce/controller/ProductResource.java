@@ -46,7 +46,7 @@ public class ProductResource {
         existingProduct.setDescription(updatedProduct.getDescription());
 
 
-        return service.savebyId(existingProduct);
+        return service.save(existingProduct);
     }
 
     @DeleteMapping("/v1/products/{id}")
@@ -56,11 +56,11 @@ public class ProductResource {
 
     @PostMapping("/v1/products")
     public ResponseEntity<Product> createUser(@Valid @RequestBody Product product) {
-        Product savedUser = service.save(product);
+        Product savedProduct = service.save(product);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
-                .buildAndExpand(savedUser.getProductId())
+                .buildAndExpand(savedProduct.getProductId())
                 .toUri();
-        return ResponseEntity.created(location).build();
+        return ResponseEntity.created(location).body(savedProduct);
     }
 }
