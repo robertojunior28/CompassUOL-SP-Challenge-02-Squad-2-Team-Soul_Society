@@ -11,6 +11,8 @@ import org.mockito.MockitoAnnotations;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -55,6 +57,33 @@ class ProductDaoServiceTest {
         assertEquals(product1.getPrice(), productSaved.getPrice());
         assertEquals(product1.getDescription(), productSaved.getDescription());
         verify(productRepo, times(1)).save(product1);
+
+    }
+
+    @Test
+    void testFindByIDIfIdExist(){
+        Product product1 = new Product(1, "Product 1", BigDecimal.valueOf(10.0), "Description 1");
+        Integer id = product1.getProductId();
+
+        when(productRepo.findById(id)).thenReturn(Optional.of(product1));
+
+        Product foundedProduct = productDaoService.findById(id);
+
+        assertNotNull(foundedProduct);
+        assertEquals(id, foundedProduct.getProductId());
+        assertEquals(product1.getName(), foundedProduct.getName());
+        assertEquals(product1.getPrice(), foundedProduct.getPrice());
+        assertEquals(product1.getDescription(), foundedProduct.getDescription());
+        verify(productRepo, times(1)).findById(id);
+    }
+
+    @Test
+    void testFindByIdIfIdNonExist(){
+        Integer id = 444;
+        when(productRepo.findById(id)).thenReturn(Optional.empty());
+
+        assertThrows(NoSuchElementException.class, () -> productDaoService.findById(id));
+        verify(productRepo, times(1)).findById(id);
 
     }
 }
