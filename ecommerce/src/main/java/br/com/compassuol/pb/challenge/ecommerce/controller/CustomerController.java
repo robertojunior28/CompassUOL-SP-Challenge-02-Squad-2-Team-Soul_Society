@@ -13,10 +13,12 @@ public class CustomerController {
     @Autowired
     private CustomerRepository customerRepository;
     
+
     //@GetMapping("/v1/products/{id}")
     //public Customer retrieveProductById(@PathVariable Integer id){
     //    return service.findById(id);
     //}
+
     
     @PostMapping("v1/customers")
     @ResponseStatus(code = HttpStatus.CREATED)

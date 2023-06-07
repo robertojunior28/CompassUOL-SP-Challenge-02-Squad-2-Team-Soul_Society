@@ -8,11 +8,11 @@
       </list>
     </option>
   </component>
-<<<<<<< HEAD
+<<<<<<<<< Temporary merge branch 1
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="corretto-17" project-jdk-type="JavaSDK">
-=======
+=========
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
->>>>>>> 9a19902a06d8e0ab419580a693b3b09b7097b85e
+>>>>>>>>> Temporary merge branch 2
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
