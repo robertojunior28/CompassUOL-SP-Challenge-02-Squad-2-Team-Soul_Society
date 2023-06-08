@@ -11,19 +11,25 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "payment_id")
     private Integer paymentId;
+
+    @NotNull
+    @Column(name = "payment_method")
+    private String paymentMethod;
     @NotNull
     @Column(name = "payment_date")
     private Date paymentDate;
-    @Column(name = "order_id")
-    private Order orderId;
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    @NotNull
+    private Order order;
 
     public Payment() {
     }
 
-    public Payment(Integer paymentId, Date paymentDate, Order orderId) {
-        this.paymentId = paymentId;
-        this.paymentDate = paymentDate;
-        this.orderId = orderId;
+    public Payment(String paymentMethod, Order order) {
+        this.paymentMethod = paymentMethod;
+        this.paymentDate = new Date();
+        this.order = order;
     }
 
     public Integer getPaymentId() {
@@ -34,6 +40,14 @@ public class Payment {
         this.paymentId = paymentId;
     }
 
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
     public Date getPaymentDate() {
         return paymentDate;
     }
@@ -42,12 +56,12 @@ public class Payment {
         this.paymentDate = paymentDate;
     }
 
-    public Order getOrderId() {
-        return orderId;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setOrderId(Order orderId) {
-        this.orderId = orderId;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     @Override
@@ -55,7 +69,7 @@ public class Payment {
         return "Payment{" +
                 "paymentId=" + paymentId +
                 ", paymentDate=" + paymentDate +
-                ", orderId=" + orderId +
+                ", order=" + order +
                 '}';
     }
 }
