@@ -14,16 +14,19 @@ public class Payment {
     @NotNull
     @Column(name = "payment_date")
     private Date paymentDate;
-    @Column(name = "order_id")
-    private Order orderId;
+
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    @NotNull
+    private Order order;
 
     public Payment() {
     }
 
-    public Payment(Integer paymentId, Date paymentDate, Order orderId) {
+    public Payment(Integer paymentId, Date paymentDate, Order order) {
         this.paymentId = paymentId;
         this.paymentDate = paymentDate;
-        this.orderId = orderId;
+        this.order = order;
     }
 
     public Integer getPaymentId() {
@@ -42,12 +45,12 @@ public class Payment {
         this.paymentDate = paymentDate;
     }
 
-    public Order getOrderId() {
-        return orderId;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setOrderId(Order orderId) {
-        this.orderId = orderId;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     @Override
@@ -55,7 +58,7 @@ public class Payment {
         return "Payment{" +
                 "paymentId=" + paymentId +
                 ", paymentDate=" + paymentDate +
-                ", orderId=" + orderId +
+                ", order=" + order +
                 '}';
     }
 }

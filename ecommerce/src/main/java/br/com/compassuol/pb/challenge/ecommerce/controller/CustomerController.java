@@ -9,6 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 
 @RestController
+@RequestMapping("/customers")
 public class CustomerController {
 
     private CustomerDaoService service;
@@ -19,18 +20,18 @@ public class CustomerController {
     }
 
 
-    @GetMapping("/v1/customers/{id}")
+    @GetMapping("/{id}")
     public Customer retrieveCustomerById(@PathVariable Integer id){
         return service.findById(id);
     }
     
-    @PostMapping("/v1/customers")
+    @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public Customer createCustomer(@RequestBody Customer customer){
         return service.save(customer);
     }
 
-    @PutMapping("/v1/customers/{id}")
+    @PutMapping("/{id}")
     public Customer updateCustomer(@PathVariable Integer id, @RequestBody Customer customer ){
         var existingCustomer = service.findById(id);
         if(existingCustomer == null){

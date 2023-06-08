@@ -11,8 +11,6 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
-@Transactional
-@Component
 public class ProductDaoService {
 
     private final ProductRepository productRepo;
