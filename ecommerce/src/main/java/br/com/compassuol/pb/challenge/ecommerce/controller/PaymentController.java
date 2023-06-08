@@ -16,6 +16,6 @@ public class PaymentController {
         this.paymentDaoService = paymentDaoService;}
 
     @GetMapping("/v1/payments")
-    public List<Payment> retrieveAllPayments() {return paymentDaoService.findAll();}
+    public List<Payment> retrieveAllPayments() {return paymentDaoService.retrieveAllPayment();}
 
 }
