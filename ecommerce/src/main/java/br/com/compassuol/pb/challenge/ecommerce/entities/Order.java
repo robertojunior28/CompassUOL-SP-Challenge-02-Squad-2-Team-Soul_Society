@@ -2,11 +2,10 @@ package br.com.compassuol.pb.challenge.ecommerce.entities;
 
 import br.com.compassuol.pb.challenge.ecommerce.enums.OrderStatus;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+
+import jakarta.persistence.Entity;
 
 @Entity
 public class Order {
@@ -65,4 +64,5 @@ public class Order {
     public void setDate(Date date) {
         this.date = date;
     }
+
 }
