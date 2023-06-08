@@ -11,8 +11,12 @@ import org.springframework.web.server.ResponseStatusException;
 @RestController
 public class CustomerController {
 
-    @Autowired
     private CustomerDaoService service;
+
+    @Autowired
+    public CustomerController(CustomerDaoService service){
+        this.service=service;
+    }
 
 
     @GetMapping("/v1/customers/{id}")
@@ -33,7 +37,7 @@ public class CustomerController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer not found");
         }
         existingCustomer.setName(customer.getName());
-        existingCustomer.setCpf(customer.getCpf());
+        //existingCustomer.setCpf(customer.getCpf());
         existingCustomer.setEmail(customer.getEmail());
         existingCustomer.setActive(customer.getActive());
         return service.save(customer);
