@@ -1,38 +1,38 @@
 package br.com.compassuol.pb.challenge.ecommerce.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.validation.Constraint;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import org.hibernate.validator.constraints.UniqueElements;
-import org.hibernate.validator.constraints.br.CPF;
+
+import java.util.Set;
 
 @Entity
 public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "customer_id", nullable = false, unique = true)
     private Integer customerId;
 
-    @NotNull
+    @Column(name = "name", nullable = false)
     @Size(min = 3)
     private String name;
 
-    @NotNull
     //@CPF(message = "CPF inválido")
-    //@UniqueElements
+    @Column(name = "CPF", nullable = false, unique = true)
     private String cpf;
 
     @Email
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
 
-    @NotNull
+    @Column(name = "active", nullable = false)
     private Boolean active;
+
+    @OneToMany(mappedBy = "customer")
+    private Set<Order> orders;
+
 
     public Customer() {
     }

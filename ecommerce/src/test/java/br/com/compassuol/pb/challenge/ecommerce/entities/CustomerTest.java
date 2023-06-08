@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DataJpaTest
- class CustomersTest {
+ class CustomerTest {
 
      @Test
      public void testValidCustomer(){
