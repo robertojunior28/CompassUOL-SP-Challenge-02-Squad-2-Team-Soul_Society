@@ -41,7 +41,7 @@ public class CustomerController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer not found");
         }
         existingCustomer.setName(customer.getName());
-        //existingCustomer.setCpf(customer.getCpf());
+        existingCustomer.setCpf(customer.getCpf());
         existingCustomer.setEmail(customer.getEmail());
         existingCustomer.setActive(customer.getActive());
         return service.save(customer);
