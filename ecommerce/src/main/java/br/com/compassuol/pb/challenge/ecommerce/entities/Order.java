@@ -2,10 +2,9 @@ package br.com.compassuol.pb.challenge.ecommerce.entities;
 
 import br.com.compassuol.pb.challenge.ecommerce.enums.OrderStatus;
 import jakarta.persistence.*;
+
 import java.util.Date;
 import java.util.List;
-
-import jakarta.persistence.Entity;
 
 @Entity
 @Table(name = "Order")
@@ -46,7 +45,7 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public List<OrderStatus> getStatus() {
+    public List<OrderStatus> getStatus(String s) {
         return status;
     }
 
@@ -54,7 +53,7 @@ public class Order {
         this.status = status;
     }
 
-    public Customer getCustomer() {
+    public Customer getCustomer(String customerA) {
         return customer;
     }
 
@@ -62,8 +61,8 @@ public class Order {
         this.customer = customer;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getDate(String date) {
+        return this.date;
     }
 
     public void setDate(Date date) {
