@@ -5,16 +5,13 @@ import br.com.compassuol.pb.challenge.ecommerce.repository.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.NoSuchElementException;
-
 @Service
-public class PaymentDaoService {
+public class PaymentService {
 
     private PaymentRepository paymentRepository;
 
     @Autowired
-    public PaymentDaoService(PaymentRepository paymentRepository) {
+    public PaymentService(PaymentRepository paymentRepository) {
         this.paymentRepository = paymentRepository;
     }
 

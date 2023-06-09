@@ -1,5 +1,6 @@
 package br.com.compassuol.pb.challenge.ecommerce.entities;
 
+import br.com.compassuol.pb.challenge.ecommerce.enums.PaymentMethod;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -14,7 +15,7 @@ public class Payment {
 
     @NotNull
     @Column(name = "payment_method")
-    private String paymentMethod;
+    private PaymentMethod paymentMethod;
     @NotNull
     @Column(name = "payment_date")
     private Date paymentDate;
@@ -27,15 +28,9 @@ public class Payment {
     }
 
 
-    public Payment(String paymentMethod, Order order) {
+    public Payment(PaymentMethod paymentMethod, Order order) {
         this.paymentMethod = paymentMethod;
         this.paymentDate = new Date();
-    }
-
-    public Payment(Integer paymentId, Date paymentDate, Order order) {
-        this.paymentId = paymentId;
-        this.paymentDate = paymentDate;
-
         this.order = order;
     }
 
@@ -47,11 +42,11 @@ public class Payment {
         this.paymentId = paymentId;
     }
 
-    public String getPaymentMethod() {
+    public PaymentMethod getPaymentMethod() {
         return paymentMethod;
     }
 
-    public void setPaymentMethod(String paymentMethod) {
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
 
@@ -75,6 +70,7 @@ public class Payment {
     public String toString() {
         return "Payment{" +
                 "paymentId=" + paymentId +
+                ", paymentMethod=" + paymentMethod +
                 ", paymentDate=" + paymentDate +
                 ", order=" + order +
                 '}';

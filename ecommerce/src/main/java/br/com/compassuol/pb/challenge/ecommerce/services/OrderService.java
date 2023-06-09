@@ -9,14 +9,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class OrderDaoService {
+public class OrderService {
 
     private OrderRepository orderRepository;
 
     private Customer customer;
 
     @Autowired
-    public OrderDaoService(OrderRepository orderRepository){
+    public OrderService(OrderRepository orderRepository){
         this.orderRepository=orderRepository;
     }
 

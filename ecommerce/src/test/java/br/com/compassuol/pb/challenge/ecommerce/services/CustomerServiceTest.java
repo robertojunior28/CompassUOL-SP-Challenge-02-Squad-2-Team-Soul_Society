@@ -5,10 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class CustomerDaoServiceTest {
+public class CustomerServiceTest {
 
     @Autowired
-    private CustomerDaoService customerDaoService;
+    private CustomerService customerService;
 
     @Test
     public void testCustomerDaoService() {

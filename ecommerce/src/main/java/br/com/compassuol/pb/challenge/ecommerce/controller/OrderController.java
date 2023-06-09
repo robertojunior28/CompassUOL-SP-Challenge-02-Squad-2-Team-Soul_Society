@@ -2,7 +2,7 @@ package br.com.compassuol.pb.challenge.ecommerce.controller;
 
 import br.com.compassuol.pb.challenge.ecommerce.entities.Customer;
 import br.com.compassuol.pb.challenge.ecommerce.entities.Order;
-import br.com.compassuol.pb.challenge.ecommerce.services.OrderDaoService;
+import br.com.compassuol.pb.challenge.ecommerce.services.OrderService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,10 +18,10 @@ import java.util.List;
 @RequestMapping("/orders")
 public class OrderController {
 
-    private OrderDaoService service;
+    private OrderService service;
 
     @Autowired
-    public OrderController(OrderDaoService service) {
+    public OrderController(OrderService service) {
         this.service = service;
     }
 

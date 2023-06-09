@@ -1,7 +1,7 @@
 package br.com.compassuol.pb.challenge.ecommerce.controller;
 
 import br.com.compassuol.pb.challenge.ecommerce.entities.Customer;
-import br.com.compassuol.pb.challenge.ecommerce.services.CustomerDaoService;
+import br.com.compassuol.pb.challenge.ecommerce.services.CustomerService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,10 +13,10 @@ import org.springframework.web.server.ResponseStatusException;
 @RequestMapping("/customers")
 public class CustomerController {
 
-    private CustomerDaoService service;
+    private CustomerService service;
 
     @Autowired
-    public CustomerController(CustomerDaoService service){
+    public CustomerController(CustomerService service){
         this.service=service;
     }
 
