@@ -37,15 +37,7 @@ public class CustomerController {
     @PutMapping("/{id}")
     @Transactional
     public Customer updateCustomer(@PathVariable Integer id, @Valid @RequestBody Customer customer ){
-        var existingCustomer = service.findById(id);
-        if(existingCustomer == null){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer not found");
-        }
-        existingCustomer.setName(customer.getName());
-        //existingCustomer.setCpf(customer.getCpf());
-        existingCustomer.setEmail(customer.getEmail());
-        existingCustomer.setActive(customer.getActive());
-        return service.save(customer);
+        return service.updateById(id, customer);
     }
 
 }
