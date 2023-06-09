@@ -1,27 +1,44 @@
 package br.com.compassuol.pb.challenge.ecommerce.entities;
 
+import br.com.compassuol.pb.challenge.ecommerce.enums.PaymentMethod;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@DataJpaTest
+import java.util.Date;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 class PaymentTest {
 
+    Payment payment = new Payment();
+
+    @BeforeEach
+    void setUp() {
+    }
+
     @Test
-    public void testValidPayment(){
-        Payment payment = new Payment();
-        payment.setPaymentMethod("PIX");
-        payment.setPaymentDate("2023-06-09");
-        payment.setOrder("Order A");
+    void setPaymentId() {
+        payment.setPaymentId(1);
+        assertEquals(1, payment.getPaymentId());
+    }
 
-        String paymentMethod = String.valueOf(payment.getPaymentMethod());
-        String paymentDate = String.valueOf(payment.getPaymentDate());
-        String order = payment.getOrder().toString();
+    @Test
+    void setPaymentMethod() {
+        payment.setPaymentMethod(PaymentMethod.PIX);
+        assertEquals(PaymentMethod.PIX, payment.getPaymentMethod());
+    }
 
-        System.out.println(payment.getPaymentId());
+    @Test
+    void setPaymentDate() {
+        payment.setPaymentDate(new Date());
+        assertEquals(new Date(), payment.getPaymentDate());
+    }
 
-        assertEquals("PIX", paymentMethod);
-        assertEquals("2023-06-09", paymentDate);
-        assertEquals("estagio@compass.com", order);
+    @Test
+    void setOrder() {
+        var order = new Order();
+        order.setId(1);
+        payment.setOrder(order);
+        assertEquals(1, payment.getOrder().getId());
     }
 }

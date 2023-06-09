@@ -43,11 +43,11 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public EntityModel<Product> retrieveProductById(@PathVariable Integer id){
+    public EntityModel<Product> retrieveProductById(@PathVariable Integer id) {
         Optional<Product> product = productRepository.findById(id);
 
-        if(product.isEmpty())
-            throw new ProductNotFoundException("id:"+id);
+        if (product.isEmpty())
+            throw new ProductNotFoundException("id:" + id);
 
         EntityModel<Product> entityModel = EntityModel.of(product.get());
 
@@ -59,7 +59,7 @@ public class ProductController {
 
     @PutMapping("/{id}")
     @Transactional
-    public Product updateProduct(@PathVariable Integer id, @RequestBody Product updatedProduct){
+    public Product updateProduct(@PathVariable Integer id, @RequestBody Product updatedProduct) {
         Product existingProduct = service.findById(id);
 
         if (existingProduct == null) {
