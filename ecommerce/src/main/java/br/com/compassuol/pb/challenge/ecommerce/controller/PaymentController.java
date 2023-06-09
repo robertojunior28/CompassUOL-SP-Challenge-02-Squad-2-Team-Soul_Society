@@ -28,12 +28,13 @@ public class PaymentController {
 //    public List<Payment> retrieveAllPayments() {return paymentDaoService.retrieveAllPayment();}
 
     @PostMapping("/v1/products")
-    public ResponseEntity<Payment> createUser(@Valid @RequestBody Payment payment) {
-        Payment savedPayment = paymentDaoService.save(payment);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(savedPayment.getPaymentId())
-                .toUri();
-        return ResponseEntity.created(location).body(savedPayment);
+    public Payment createPayment(@Valid @RequestBody Payment payment) {
+//        Payment savedPayment = paymentDaoService.save(payment);
+//        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+//                .path("/{id}")
+//                .buildAndExpand(savedPayment.getPaymentId())
+//                .toUri();
+//        return ResponseEntity.created(location).body(savedPayment);
+        return paymentDaoService.save(payment);
     }
 }

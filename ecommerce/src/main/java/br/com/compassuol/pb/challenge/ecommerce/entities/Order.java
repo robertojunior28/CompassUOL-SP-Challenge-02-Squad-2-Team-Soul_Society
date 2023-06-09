@@ -24,6 +24,9 @@ public class Order {
     @Column(name = "date")
     private Date date;
 
+    @OneToMany(mappedBy = "order")
+    private List<Payment> payments;
+
     public Order() {
     }
 
