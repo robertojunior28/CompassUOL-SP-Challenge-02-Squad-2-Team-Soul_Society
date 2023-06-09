@@ -8,11 +8,13 @@ import java.util.List;
 import jakarta.persistence.Entity;
 
 @Entity
+@Table(name = "Order")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Column(name = "order_id")
+    private Integer orderId;
 
     @Enumerated(EnumType.STRING)
     private List<OrderStatus> status;
@@ -37,11 +39,11 @@ public class Order {
     }
 
     public Integer getId() {
-        return id;
+        return orderId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(Integer orderId) {
+        this.orderId = orderId;
     }
 
     public List<OrderStatus> getStatus() {

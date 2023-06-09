@@ -2,6 +2,7 @@ package br.com.compassuol.pb.challenge.ecommerce.controller;
 
 import br.com.compassuol.pb.challenge.ecommerce.entities.Product;
 import br.com.compassuol.pb.challenge.ecommerce.services.ProductDaoService;
+import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
+@RequestMapping("/products")
 public class ProductController {
 
     private final ProductDaoService service;
@@ -22,17 +24,18 @@ public class ProductController {
     }
 
     //Get /v1/products
-    @GetMapping("/v1/products")
+    @GetMapping
     public List<Product> retrieveAllProducts() {
         return service.findAll();
     }
 
-    @GetMapping("/v1/products/{id}")
+    @GetMapping("/{id}")
     public Product retrieveProductById(@PathVariable Integer id){
         return service.findById(id);
     }
 
-    @PutMapping("/v1/products/{id}")
+    @PutMapping("/{id}")
+    @Transactional
     public Product updateProduct(@PathVariable Integer id, @RequestBody Product updatedProduct){
         Product existingProduct = service.findById(id);
 
@@ -49,12 +52,14 @@ public class ProductController {
         return service.save(existingProduct);
     }
 
-    @DeleteMapping("/v1/products/{id}")
+    @DeleteMapping("/{id}")
+    @Transactional
     public void deleteUser(@PathVariable int id) {
         service.deleteById(id);
     }
 
-    @PostMapping("/v1/products")
+    @PostMapping
+    @Transactional
     public ResponseEntity<Product> createUser(@Valid @RequestBody Product product) {
         Product savedProduct = service.save(product);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()

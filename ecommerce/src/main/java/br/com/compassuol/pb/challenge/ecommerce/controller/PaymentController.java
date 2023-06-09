@@ -6,8 +6,12 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+=======
+import org.springframework.web.bind.annotation.RequestMapping;
+>>>>>>> ffb19e2d667af941073e62bc68fbd4668c897811
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -15,6 +19,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
+@RequestMapping("/payments")
 public class PaymentController {
 
     private PaymentDaoService paymentDaoService;
@@ -24,10 +29,7 @@ public class PaymentController {
         this.paymentDaoService = paymentDaoService;
     }
 
-//    @GetMapping("/v1/payments")
-//    public List<Payment> retrieveAllPayments() {return paymentDaoService.retrieveAllPayment();}
-
-    @PostMapping("/v1/products")
+    @PostMapping
     public Payment createPayment(@Valid @RequestBody Payment payment) {
 //        Payment savedPayment = paymentDaoService.save(payment);
 //        URI location = ServletUriComponentsBuilder.fromCurrentRequest()

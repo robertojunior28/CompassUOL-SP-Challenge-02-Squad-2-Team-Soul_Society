@@ -26,9 +26,16 @@ public class Payment {
     public Payment() {
     }
 
+
     public Payment(String paymentMethod, Order order) {
         this.paymentMethod = paymentMethod;
         this.paymentDate = new Date();
+    }
+
+    public Payment(Integer paymentId, Date paymentDate, Order order) {
+        this.paymentId = paymentId;
+        this.paymentDate = paymentDate;
+
         this.order = order;
     }
 
