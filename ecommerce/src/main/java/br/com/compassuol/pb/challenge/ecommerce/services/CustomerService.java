@@ -4,9 +4,12 @@ import br.com.compassuol.pb.challenge.ecommerce.entities.Customer;
 
 import br.com.compassuol.pb.challenge.ecommerce.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class CustomerService {
@@ -28,5 +31,27 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
+    public Customer updateById(Integer id, Customer customer) {
 
+        Optional<Customer> optional = customerRepository.findById(id);
+
+        if (optional.isPresent()) {
+            Customer updatedCustomer = optional.get();
+            if (customer.getName() != null) {
+                updatedCustomer.setName(customer.getName());
+            }
+            if (customer.getCpf() != null) {
+                updatedCustomer.setCpf(customer.getCpf());
+            }
+            if (customer.getEmail() != null) {
+                updatedCustomer.setEmail(customer.getEmail());
+            }
+            if (customer.getActive() != null) {
+                updatedCustomer.setActive(customer.getActive());
+            }
+
+            return customerRepository.save(updatedCustomer);
+        }
+        return null;
+    }
 }
