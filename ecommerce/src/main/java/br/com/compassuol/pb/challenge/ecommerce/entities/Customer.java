@@ -3,6 +3,7 @@ package br.com.compassuol.pb.challenge.ecommerce.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
+import org.hibernate.validator.constraints.br.CPF;
 
 import java.util.Set;
 
@@ -18,7 +19,7 @@ public class Customer {
     @Size(min = 3)
     private String name;
 
-    //@CPF(message = "CPF inválido")
+    @CPF(message = "CPF inválido")
     @Column(name = "CPF", nullable = false, unique = true)
     private String cpf;
 
