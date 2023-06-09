@@ -2,21 +2,19 @@ package br.com.compassuol.pb.challenge.ecommerce.services;
 
 import br.com.compassuol.pb.challenge.ecommerce.entities.Product;
 import br.com.compassuol.pb.challenge.ecommerce.repository.ProductRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
-public class ProductDaoService {
+public class ProductService {
 
     private final ProductRepository productRepo;
 
     @Autowired
-    public ProductDaoService(ProductRepository productRepo){
+    public ProductService(ProductRepository productRepo){
         this.productRepo = productRepo;
     }
 

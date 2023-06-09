@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 import java.util.NoSuchElementException;
 
 @Service
-public class CustomerDaoService {
+public class CustomerService {
 
     private CustomerRepository customerRepository;
 
     @Autowired
-    public  CustomerDaoService(CustomerRepository customerRepository){
+    public CustomerService(CustomerRepository customerRepository){
         this.customerRepository = customerRepository;
     }
 

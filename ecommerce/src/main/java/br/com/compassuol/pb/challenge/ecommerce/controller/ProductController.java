@@ -1,7 +1,7 @@
 package br.com.compassuol.pb.challenge.ecommerce.controller;
 
 import br.com.compassuol.pb.challenge.ecommerce.entities.Product;
-import br.com.compassuol.pb.challenge.ecommerce.services.ProductDaoService;
+import br.com.compassuol.pb.challenge.ecommerce.services.ProductService;
 import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
 import jakarta.validation.Valid;
@@ -17,9 +17,9 @@ import java.util.List;
 @RequestMapping("/products")
 public class ProductController {
 
-    private final ProductDaoService service;
+    private final ProductService service;
 
-    public ProductController(ProductDaoService service) {
+    public ProductController(ProductService service) {
         this.service = service;
     }
 

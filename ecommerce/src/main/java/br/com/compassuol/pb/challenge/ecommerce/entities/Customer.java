@@ -3,6 +3,7 @@ package br.com.compassuol.pb.challenge.ecommerce.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
+import org.hibernate.validator.constraints.br.CPF;
 
 import java.util.Set;
 
@@ -18,7 +19,7 @@ public class Customer {
     @Size(min = 3)
     private String name;
 
-    //@CPF(message = "CPF inválido")
+    @CPF(message = "CPF inválido")
     @Column(name = "CPF", nullable = false, unique = true)
     private String cpf;
 
@@ -27,8 +28,8 @@ public class Customer {
     private String email;
 
 
-    @Column(name = "active", nullable = false)
-    private Boolean active;
+    @Column(name = "active")
+    private Boolean active = true;
 
     @OneToMany(mappedBy = "customer")
     private Set<Order> orders;
@@ -37,11 +38,11 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String name, String cpf, String email, Boolean active) {
+    public Customer(String name, String cpf, String email) {
         this.name = name;
         this.cpf = cpf;
         this.email = email;
-        this.active = active;
+        this.active = true;
     }
 
     public Integer getCustomerId() {

@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class ProductDaoServiceTest {
 
     @Autowired
-    private ProductDaoService productDaoService;
+    private ProductService productDaoService;
 
     @Test
     public void testProductDaoService() {
