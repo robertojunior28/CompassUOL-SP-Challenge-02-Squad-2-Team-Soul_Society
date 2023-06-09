@@ -22,12 +22,6 @@ public class PaymentController {
 
     @PostMapping
     public Payment createPayment(@Valid @RequestBody Payment payment) {
-//        Payment savedPayment = paymentDaoService.save(payment);
-//        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-//                .path("/{id}")
-//                .buildAndExpand(savedPayment.getPaymentId())
-//                .toUri();
-//        return ResponseEntity.created(location).body(savedPayment);
         return paymentService.save(payment);
     }
 }
