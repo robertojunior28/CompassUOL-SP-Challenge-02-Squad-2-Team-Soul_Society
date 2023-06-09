@@ -28,8 +28,8 @@ public class Customer {
     private String email;
 
 
-    @Column(name = "active", nullable = false)
-    private Boolean active;
+    @Column(name = "active")
+    private Boolean active = true;
 
     @OneToMany(mappedBy = "customer")
     private Set<Order> orders;
@@ -38,11 +38,11 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String name, String cpf, String email, Boolean active) {
+    public Customer(String name, String cpf, String email) {
         this.name = name;
         this.cpf = cpf;
         this.email = email;
-        this.active = active;
+        this.active = true;
     }
 
     public Integer getCustomerId() {

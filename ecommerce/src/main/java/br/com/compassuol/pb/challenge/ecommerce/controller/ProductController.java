@@ -1,6 +1,7 @@
 package br.com.compassuol.pb.challenge.ecommerce.controller;
 
 import br.com.compassuol.pb.challenge.ecommerce.entities.Product;
+
 import br.com.compassuol.pb.challenge.ecommerce.exceptions.ProductNotFoundException;
 import br.com.compassuol.pb.challenge.ecommerce.repository.ProductRepository;
 import br.com.compassuol.pb.challenge.ecommerce.services.ProductService;
