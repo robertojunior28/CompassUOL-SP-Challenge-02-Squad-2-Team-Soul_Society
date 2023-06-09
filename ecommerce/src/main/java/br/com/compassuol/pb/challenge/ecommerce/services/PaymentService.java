@@ -12,18 +12,22 @@ import java.util.NoSuchElementException;
 public class PaymentService {
 
     private PaymentRepository paymentRepository;
+
     @Autowired
     public PaymentService(PaymentRepository paymentRepository) {
         this.paymentRepository = paymentRepository;
     }
 
+
     public List<Payment> retrieveAllPayment() {
         return paymentRepository.findAll();
     }
 
+
     public Payment save(Payment payment) {
         return paymentRepository.save(payment);
     }
+
 
     public Payment findById(Integer id){
         return paymentRepository.findById(id)
@@ -40,4 +44,5 @@ public class PaymentService {
     public void deleteById(int id) {
         paymentRepository.deleteById(id);
     }
+
 }
