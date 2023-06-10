@@ -37,7 +37,9 @@ public class ProductService {
 
     public Product updateById(Integer id, Product product) {
 
-        Optional<Product> optional = productRepo.findById(id);
+        Optional<Product> optional = Optional.ofNullable(productRepo.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Product not found with ID: " + id)));
+
 
         if (optional.isPresent()) {
             Product updatedProduct = optional.get();

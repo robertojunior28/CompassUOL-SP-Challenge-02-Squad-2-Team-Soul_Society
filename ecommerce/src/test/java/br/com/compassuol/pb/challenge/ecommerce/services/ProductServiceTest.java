@@ -86,4 +86,48 @@ class ProductServiceTest {
         verify(productRepo, times(1)).findById(id);
 
     }
+
+    @Test
+    void testUpdateProduct_ExistingId(){
+        Integer id = 454;
+        Product existingProduct = new Product(id, "Product one", BigDecimal.valueOf(10.0), "Cool Description");
+        Product updatedProduct = new Product(id, "Product new", BigDecimal.valueOf(20.0), "Cool Description");
+
+        when(productRepo.findById(id)).thenReturn(Optional.of(existingProduct));
+        when(productRepo.save(existingProduct)).thenReturn(existingProduct);
+
+
+        Product result = productService.updateById(id, updatedProduct);
+
+
+        assertNotNull(result);
+        assertEquals(id, result.getProductId());
+        assertEquals(updatedProduct.getName(), result.getName());
+        assertEquals(updatedProduct.getPrice(), result.getPrice());
+        assertEquals(updatedProduct.getDescription(), result.getDescription());
+        verify(productRepo, times(1)).findById(id);
+        verify(productRepo, times(1)).save(existingProduct);
+    }
+
+    @Test
+    void testUpdateProduct_NonexistentId() {
+
+        Integer id = 450;
+        Product updatedProduct = new Product(id, "new Product", BigDecimal.valueOf(20.0), "new Description");
+
+        when(productRepo.findById(id)).thenReturn(Optional.empty());
+
+        NoSuchElementException exception = assertThrows(NoSuchElementException.class, () -> productService.updateById(id, updatedProduct));
+        assertEquals("Product not found with ID: " + id, exception.getMessage());
+        verify(productRepo, times(1)).findById(id);
+        verify(productRepo, never()).save(any(Product.class));
+    }
+
+    @Test
+    void testDeleteById() {
+
+        int id = 1;
+        productService.deleteById(id);
+        verify(productRepo, times(1)).deleteById(id);
+    }
 }
