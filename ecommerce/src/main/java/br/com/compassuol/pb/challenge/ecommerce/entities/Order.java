@@ -3,6 +3,7 @@ package br.com.compassuol.pb.challenge.ecommerce.entities;
 import br.com.compassuol.pb.challenge.ecommerce.enums.OrderStatus;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,7 +17,8 @@ public class Order {
     private Integer orderId;
 
     @Enumerated(EnumType.STRING)
-    private List<OrderStatus> status;
+    @Column(name = "status")
+    private List<OrderStatus> status = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
@@ -28,12 +30,16 @@ public class Order {
     @OneToMany(mappedBy = "order")
     private List<Payment> payments;
 
+    @Transient
+    private Integer customerId;
+
     public Order() {
+
     }
 
-    public Order(Customer customer) {
+    public Order(Integer customerId) {
         this.status.add(OrderStatus.CREATED);
-        this.customer = customer;
+        this.customerId = customerId;
         this.date = new Date();
     }
 
@@ -45,12 +51,12 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public List<OrderStatus> getStatus(String s) {
+    public List<OrderStatus> getStatus() {
         return status;
     }
 
     public void setStatus(List<OrderStatus> status) {
-        this.status = status;
+        this.status.add(OrderStatus.CREATED);
     }
 
     public Customer getCustomer(String customerA) {
@@ -67,6 +73,14 @@ public class Order {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public Integer getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
 
 }
