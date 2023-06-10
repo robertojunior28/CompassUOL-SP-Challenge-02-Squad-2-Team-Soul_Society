@@ -77,13 +77,13 @@ public class ProductController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public void deleteUser(@PathVariable int id) {
+    public void deleteProduct(@PathVariable int id) {
         service.deleteById(id);
     }
 
     @PostMapping
     @Transactional
-    public ResponseEntity<Product> createUser(@PathVariable int id, @Valid @RequestBody Product product) {
+    public ResponseEntity<Product> createProduct(@Valid @RequestBody Product product) {
         Product savedProduct = service.save(product);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
