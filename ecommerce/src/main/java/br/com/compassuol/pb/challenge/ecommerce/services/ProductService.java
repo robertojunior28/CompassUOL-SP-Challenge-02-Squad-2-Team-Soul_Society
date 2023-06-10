@@ -1,5 +1,6 @@
 package br.com.compassuol.pb.challenge.ecommerce.services;
 
+import br.com.compassuol.pb.challenge.ecommerce.entities.Customer;
 import br.com.compassuol.pb.challenge.ecommerce.entities.Product;
 import br.com.compassuol.pb.challenge.ecommerce.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -33,16 +35,28 @@ public class ProductService {
                 .orElseThrow(() -> new NoSuchElementException("Product not found with ID: " + id));
     }
 
-    public Product updateProduct(Integer id,Product updatedProduct){
-        Product existingProduct = productRepo.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Product not found with ID: " + id));
+    public Product updateById(Integer id, Product product) {
 
-        existingProduct.setName(updatedProduct.getName());
-        existingProduct.setPrice(updatedProduct.getPrice());
-        existingProduct.setDescription(updatedProduct.getDescription());
+        Optional<Product> optional = productRepo.findById(id);
 
-        return productRepo.save(existingProduct);
+        if (optional.isPresent()) {
+            Product updatedProduct = optional.get();
+            if (product.getName() != null) {
+                updatedProduct.setName(product.getName());
+            }
+            if (product.getPrice() != null) {
+                updatedProduct.setPrice(product.getPrice());
+            }
+            if (product.getDescription() != null) {
+                updatedProduct.setDescription(product.getDescription());
+            }
+
+
+            return productRepo.save(updatedProduct);
+        }
+        return null;
     }
+
 
     public void deleteById(int id) {
         productRepo.deleteById(id);
