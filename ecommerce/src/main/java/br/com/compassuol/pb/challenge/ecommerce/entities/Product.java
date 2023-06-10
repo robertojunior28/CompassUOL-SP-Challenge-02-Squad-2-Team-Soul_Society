@@ -1,9 +1,6 @@
 package br.com.compassuol.pb.challenge.ecommerce.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -14,16 +11,19 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "product_id", nullable = false, unique = true)
     private Integer productId;
 
-    @NotNull
+
+    @Column(name = "product_name", nullable = false)
     @Size(min = 3)
     private String name;
 
-    @NotNull
+
+    @Column(name = "product_price", nullable = false)
     private BigDecimal price;
 
-    @NotNull
+    @Column(name = "product_description", nullable = false)
     @Size(min = 3)
     private String description;
 

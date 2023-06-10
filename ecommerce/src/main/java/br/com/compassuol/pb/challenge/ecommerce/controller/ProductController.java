@@ -1,5 +1,6 @@
 package br.com.compassuol.pb.challenge.ecommerce.controller;
 
+import br.com.compassuol.pb.challenge.ecommerce.entities.Customer;
 import br.com.compassuol.pb.challenge.ecommerce.entities.Product;
 
 import br.com.compassuol.pb.challenge.ecommerce.exceptions.ProductNotFoundException;
@@ -57,22 +58,11 @@ public class ProductController {
         return entityModel;
     }
 
+
     @PutMapping("/{id}")
     @Transactional
-    public Product updateProduct(@PathVariable Integer id, @RequestBody Product updatedProduct) {
-        Product existingProduct = service.findById(id);
-
-        if (existingProduct == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found");
-
-        }
-
-        existingProduct.setName(updatedProduct.getName());
-        existingProduct.setPrice(updatedProduct.getPrice());
-        existingProduct.setDescription(updatedProduct.getDescription());
-
-
-        return service.save(existingProduct);
+    public Product updateProduct(@PathVariable Integer id, @Valid @RequestBody Product product){
+        return service.updateById(id, product);
     }
 
     @DeleteMapping("/{id}")
