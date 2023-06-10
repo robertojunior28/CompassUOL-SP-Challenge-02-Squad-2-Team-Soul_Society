@@ -50,6 +50,7 @@ public class CustomerService {
 
             return customerRepository.save(updatedCustomer);
         }
-        return null;
+
+        throw new CustomerNotFoundException("Customer not found with ID: " + id);
     }
 }

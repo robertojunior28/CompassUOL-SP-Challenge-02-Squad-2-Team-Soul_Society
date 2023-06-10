@@ -73,6 +73,38 @@ public class CustomerServiceTest {
 
     @Test
     void testUpdateByIdIfIdExist(){
+        Customer customer = new Customer("Customer", "094.038.120-60","customer@gmail.com");
 
+        Integer id = customer.getCustomerId();
+
+        Customer updateCustomer = new Customer("New Customer", "442.128.860-81","customer@outlook.com");
+        updateCustomer.setCustomerId(id);
+
+        when(customerRepository.findById(id)).thenReturn(Optional.of(customer));
+        when(customerRepository.save(customer)).thenReturn(customer);
+
+        Customer result = customerService.updateById(id,updateCustomer);
+
+        assertNotNull(result);
+        assertEquals(id, result.getCustomerId());
+        assertEquals(updateCustomer.getName(), result.getName());
+        assertEquals(updateCustomer.getCpf(), result.getCpf());
+        assertEquals(updateCustomer.getEmail(), result.getEmail());
+        verify(customerRepository, times(1)).findById(id);
+        verify(customerRepository, times(1)).save(customer);
+    }
+
+    @Test
+    void testUpdateByIdIfIdNotExist(){
+        Integer id = 999;
+        Customer customer = new Customer("Customer", "094.038.120-60","customer@gmail.com");
+
+        when(customerRepository.findById(id)).thenReturn(Optional.empty());
+
+        CustomerNotFoundException exception = assertThrows(CustomerNotFoundException.class,
+                () ->customerService.updateById(id, customer));
+        assertEquals("Customer not found with ID: " + id, exception.getMessage());
+        verify(customerRepository, times(1)).findById(id);
+        verify(customerRepository, never()).save(any(Customer.class));
     }
 }
