@@ -3,15 +3,13 @@ package br.com.compassuol.pb.challenge.ecommerce.services;
 import br.com.compassuol.pb.challenge.ecommerce.entities.Customer;
 import br.com.compassuol.pb.challenge.ecommerce.entities.Order;
 import br.com.compassuol.pb.challenge.ecommerce.enums.OrderStatus;
+import br.com.compassuol.pb.challenge.ecommerce.exceptions.CustomerNotFoundException;
 import br.com.compassuol.pb.challenge.ecommerce.repository.CustomerRepository;
 import br.com.compassuol.pb.challenge.ecommerce.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class OrderService {
@@ -42,7 +40,11 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
-    public List<Order> findAllByCustomer(Customer customer){
+    public List<Order> findAllByCustomer(Integer customerId){
+        Optional<Customer> customer = customerRepository.findById(customerId);
+        if(customer.isEmpty()){
+            throw new CustomerNotFoundException("Customer not found with ID:" + customerId);
+        }
         return orderRepository.findAllByCustomer(customer);
     }
 }

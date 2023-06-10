@@ -50,9 +50,9 @@ public class OrderController {
         return  ResponseEntity.created(location).body(savedOrder);
     }
 
-    @GetMapping("/{customer}")
-    public List<Order> retrieveAllOrdersByCustomer(@PathVariable Customer customer) {
-        return service.findAllByCustomer(customer);
+    @GetMapping("/customers/{customerId}")
+    public List<Order> retrieveAllOrdersByCustomer(@PathVariable Integer customerId) {
+        return service.findAllByCustomer(customerId);
     }
 
 }

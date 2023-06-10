@@ -2,13 +2,11 @@ package br.com.compassuol.pb.challenge.ecommerce.services;
 
 import br.com.compassuol.pb.challenge.ecommerce.entities.Customer;
 
+import br.com.compassuol.pb.challenge.ecommerce.exceptions.CustomerNotFoundException;
 import br.com.compassuol.pb.challenge.ecommerce.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -24,7 +22,7 @@ public class CustomerService {
 
     public Customer findById(Integer id){
         return customerRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Product not found with ID: " + id));
+                .orElseThrow(() -> new CustomerNotFoundException("Customer not found with ID: " + id));
     }
 
     public Customer save(Customer customer){
