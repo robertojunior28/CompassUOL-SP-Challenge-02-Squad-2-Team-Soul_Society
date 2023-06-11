@@ -59,7 +59,7 @@ public class Order {
         this.status.add(OrderStatus.CREATED);
     }
 
-    public Customer getCustomer(String customerA) {
+    public Customer getCustomer() {
         return customer;
     }
 
@@ -67,7 +67,7 @@ public class Order {
         this.customer = customer;
     }
 
-    public Date getDate(String date) {
+    public Date getDate() {
         return this.date;
     }
 
