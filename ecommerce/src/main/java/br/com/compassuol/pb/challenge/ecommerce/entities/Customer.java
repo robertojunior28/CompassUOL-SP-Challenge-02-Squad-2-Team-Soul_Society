@@ -42,7 +42,6 @@ public class Customer {
         this.cpf = cpf;
         this.email = email;}
 
-
     public Integer getCustomerId() {
         return customerId;
     }
@@ -58,27 +57,21 @@ public class Customer {
     public void setName(String name) {
         this.name = name;
     }
-
     public String getCpf() {
         return cpf;
     }
-
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
-
     public Boolean getActive() {
         return active;
     }
-
     public void setActive(Boolean active) {
         this.active = active;
     }

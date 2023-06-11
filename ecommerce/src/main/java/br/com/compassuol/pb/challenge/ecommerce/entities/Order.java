@@ -42,27 +42,21 @@ public class Order {
         this.customerId = customerId;
         this.date = new Date();
     }
-
     public Integer getId() {
         return orderId;
     }
-
     public void setId(Integer orderId) {
         this.orderId = orderId;
     }
-
     public List<OrderStatus> getStatus() {
         return status;
     }
-
     public void setStatus(List<OrderStatus> status) {
         this.status.add(OrderStatus.CREATED);
     }
-
     public Customer getCustomer() {
         return customer;
     }
-
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
@@ -78,9 +72,7 @@ public class Order {
     public Integer getCustomerId() {
         return customerId;
     }
-
     public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
-
 }
