@@ -34,15 +34,14 @@ public class Customer {
     @OneToMany(mappedBy = "customer")
     private Set<Order> orders;
 
-
     public Customer() {
     }
 
     public Customer(String name, String cpf, String email) {
         this.name = name;
         this.cpf = cpf;
-        this.email = email;
-    }
+        this.email = email;}
+
 
     public Integer getCustomerId() {
         return customerId;
