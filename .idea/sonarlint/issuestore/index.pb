@@ -1,8 +1,6 @@
 
 è
 _ecommerce/src/test/java/br/com/compassuol/pb/challenge/ecommerce/EcommerceApplicationTests.java,5\f\5fd6a23549f8faddbb5d4ca804571a9ea4dcc521
-ä
-Zecommerce/src/test/java/br/com/compassuol/pb/challenge/ecommerce/entities/ProductTest.java,0\0\003f400605e2b9d3b09e1cc1a1f0efd42d5176ed
 ì
 cecommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/repository/CustomerRepository.java,0\e\0e5e026aaff3164692c83e10a3fafd7f0d54d851
 í
@@ -25,8 +23,6 @@ iecommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/exceptions/Pro
 Yecommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/enums/PaymentMethod.java,a\2\a27e2c8d32f3368b04ee62559f26144351678ae3
 ä
 Zecommerce/src/test/java/br/com/compassuol/pb/challenge/ecommerce/entities/PaymentTest.java,c\b\cb37e61bb2163ea1a38a5faf82089e5986eed4eb
-ñ
-fecommerce/src/test/java/br/com/compassuol/pb/challenge/ecommerce/controller/ProductControllerTest.java,0\4\049ebe8584a8d442b483498de97790bafc656bc0
 í
 becommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/controller/PaymentController.java,7\a\7a4f8dfae04d031116145f201b59eb61b084c2e1
 í
@@ -51,11 +47,5 @@ Tecommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/entities/Order
 Wecommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/entities/Customer.java,5\e\5e6fa40330bed81209689d5a96fc1bfdba150c04
 à
 Xecommerce/src/test/java/br/com/compassuol/pb/challenge/ecommerce/entities/OrderTest.java,5\b\5beca7b18ea27106eb85f92610ab75432cf94643
-ò
-hecommerce/src/test/java/br/com/compassuol/pb/challenge/ecommerce/controller/CustomerControllerTest1.java,3\6\3692b9acc77ff66e2ea7c4ac4ca175cf3d091b97
 é
 ^ecommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/services/CustomerService.java,8\f\8fcd5283bea1656faae154a130a5a02c5d7a0c5a
-è
-_ecommerce/src/test/java/br/com/compassuol/pb/challenge/ecommerce/services/OrderServiceTest.java,9\4\94ff0fa0a1af8d2b840946969b41df5853a52815
-ë
-aecommerce/src/test/java/br/com/compassuol/pb/challenge/ecommerce/services/ProductServiceTest.java,6\d\6dfdb4468389e3827334e0531e7552f67437cc40
