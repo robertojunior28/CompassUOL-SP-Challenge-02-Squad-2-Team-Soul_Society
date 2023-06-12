@@ -27,43 +27,38 @@ class OrderControllerTest {
 
     @Test
     public void createOrder(){
-        //given
         var customer = new Customer("Customer", "132.080.480-25", "customer@gmail.com");
         var order = new Order(customer.getCustomerId());
         given(orderService.save(any())).willReturn(order);
 
-        //when
         var viewOrder = orderController.createOrder(order);
 
-        //then
         assertThat(viewOrder).isEqualTo(order);
     }
 
     @Test
     public void retrieveAllOrders(){
-        //given
         var customer = new Customer("Customer", "132.080.480-25", "customer@gmail.com");
         var order1 = new Order(customer.getCustomerId());
         var order2 = new Order(customer.getCustomerId());
         List<Order> listOrders = Arrays.asList(order1, order2);
         given(orderService.findAll()).willReturn(listOrders);
 
-        //when
         List<Order> viewOrders = orderController.retrieveAllOrders();
 
-        //then
         assertThat(viewOrders).isEqualTo(listOrders);
     }
 
     @Test
     public void retrievelAllOrdersByCustomer(){
-        //given
         var customer = new Customer("Customer", "132.080.480-25", "customer@gmail.com");
         var order1 = new Order(customer.getCustomerId());
         var order2 = new Order(customer.getCustomerId());
         List<Order> listOrders = Arrays.asList(order1, order2);
+
         given(orderService.findAllByCustomer(anyInt())).willReturn(listOrders);
         List<Order> viewOrders = orderController.retrieveAllOrdersByCustomer(customer.getCustomerId());
+
         assertThat(viewOrders).isEqualTo(listOrders);
     }
 

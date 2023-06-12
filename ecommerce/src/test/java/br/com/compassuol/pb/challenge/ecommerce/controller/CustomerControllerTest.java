@@ -24,41 +24,31 @@ class CustomerControllerTest {
 
     @Test
     public void createCustomer(){
-        //given
         var customer = new Customer("Customer", "132.080.480-25", "customer@gmail.com");
         given(customerService.save(any())).willReturn(customer);
 
-        //when
         var viewCustomer = customerController.createCustomer(customer);
 
-        //then
         assertThat(viewCustomer).isEqualTo(customer);
     }
 
     @Test
     public void retrieveCustomerById(){
-        //given
         var customer = new Customer("Customer", "132.080.480-25", "customer@gmail.com");
         given(customerService.findById(anyInt())).willReturn(customer);
 
-        //when
         var viewCustomer = customerController.retrieveCustomerById(anyInt());
-
-        //then
 
         assertThat(viewCustomer).isEqualTo(customer);
     }
 
     @Test
     public void updateCustomer(){
-        //given
         var customer = new Customer("Customer", "132.080.480-25", "customer@gmail.com");
         given(customerService.updateById(anyInt(),any())).willReturn(customer);
 
-        //when
         var viewCustomer = customerController.updateCustomer(anyInt(),any());
 
-        //then
         assertThat(viewCustomer).isEqualTo(customer);
     }
 

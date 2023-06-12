@@ -26,7 +26,7 @@ import java.util.List;
 public class EcommerceExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler({ProductNotFoundException.class, CustomerNotFoundException.class, PaymentNotFoundException.class})
-    public ResponseEntity<Object> handleCustomerNotFoundException(RuntimeException exception) {
+    public ResponseEntity<Object> handleNotFoundException(RuntimeException exception) {
         return createResponse(HttpStatus.NOT_FOUND, exception.getMessage(), Collections.singletonList(exception.getMessage()));
     }
 
