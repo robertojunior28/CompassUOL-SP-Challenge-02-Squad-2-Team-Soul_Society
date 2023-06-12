@@ -30,17 +30,21 @@ class PaymentControllerTest {
     private PaymentController paymentController;
 
     @Test
+    void testAttributes() {
+        var payment = new Payment(PaymentMethod.CASH, new Order());
+        assertEquals(PaymentMethod.CASH, payment.getPaymentMethod());
+        assertNotNull(payment.getOrder());
+        assertNotNull(payment.getPaymentDate());
+    }
+
+    @Test
     void createPayment() {
         //given
         var customer = new Customer("Customer", "132.080.480-25", "customer@gmail.com");
         var order = new Order(customer.getCustomerId());
         var payment = new Payment(PaymentMethod.CASH,order);
         given(paymentService.save(any())).willReturn(payment);
-
-        //when
         var viewPayment = paymentController.createPayment(payment);
-
-        //then
         assertThat(viewPayment).isEqualTo(payment);
     }
 }

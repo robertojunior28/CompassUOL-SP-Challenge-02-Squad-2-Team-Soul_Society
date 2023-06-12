@@ -63,11 +63,7 @@ class OrderControllerTest {
         var order2 = new Order(customer.getCustomerId());
         List<Order> listOrders = Arrays.asList(order1, order2);
         given(orderService.findAllByCustomer(anyInt())).willReturn(listOrders);
-
-        //when
         List<Order> viewOrders = orderController.retrieveAllOrdersByCustomer(customer.getCustomerId());
-
-        //then
         assertThat(viewOrders).isEqualTo(listOrders);
     }
 
