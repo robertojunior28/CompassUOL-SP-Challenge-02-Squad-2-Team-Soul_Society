@@ -25,11 +25,11 @@ class CustomerControllerTest {
     @Test
     public void createCustomer(){
         //given
-        Customer customer = new Customer("Customer", "132.080.480-25", "customer@gmail.com");
+        var customer = new Customer("Customer", "132.080.480-25", "customer@gmail.com");
         given(customerService.save(any())).willReturn(customer);
 
         //when
-        Customer viewCustomer = customerController.createCustomer(customer);
+        var viewCustomer = customerController.createCustomer(customer);
 
         //then
         assertThat(viewCustomer).isEqualTo(customer);
@@ -38,11 +38,11 @@ class CustomerControllerTest {
     @Test
     public void retrieveCustomerById(){
         //given
-        Customer customer = new Customer("Customer", "132.080.480-25", "customer@gmail.com");
+        var customer = new Customer("Customer", "132.080.480-25", "customer@gmail.com");
         given(customerService.findById(anyInt())).willReturn(customer);
 
         //when
-        Customer viewCustomer = customerController.retrieveCustomerById(anyInt());
+        var viewCustomer = customerController.retrieveCustomerById(anyInt());
 
         //then
 
@@ -52,11 +52,11 @@ class CustomerControllerTest {
     @Test
     public void updateCustomer(){
         //given
-        Customer customer = new Customer("Customer", "132.080.480-25", "customer@gmail.com");
+        var customer = new Customer("Customer", "132.080.480-25", "customer@gmail.com");
         given(customerService.updateById(anyInt(),any())).willReturn(customer);
 
         //when
-        Customer viewCustomer = customerController.updateCustomer(anyInt(),any());
+        var viewCustomer = customerController.updateCustomer(anyInt(),any());
 
         //then
         assertThat(viewCustomer).isEqualTo(customer);

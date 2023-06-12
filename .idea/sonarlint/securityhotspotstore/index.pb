@@ -7,8 +7,6 @@ cecommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/repository/Cus
 becommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/repository/PaymentRepository.java,8\1\81cfadc4ef5a4586238c3e8c41c0dcd684901ad4
 í
 becommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/repository/ProductRepository.java,4\e\4e5cea7350b4a64adeb0623e6b2b7b8d15608ac9
-Ü
-Vecommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/entities/Payment.java,4\6\46c12b57e54d119a93bc56f0267f7ac4831e0e0c
 á
 Wecommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/enums/OrderStatus.java,a\c\acc6518bf6cbeb66ad16b3a8a9a740cec50b6d57
 ô
@@ -17,16 +15,10 @@ iecommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/exceptions/Pro
 `ecommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/repository/OrderRepository.java,9\8\98330a51594df817442fae39a4efef3583f0e4dd
 â
 Yecommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/enums/PaymentMethod.java,a\2\a27e2c8d32f3368b04ee62559f26144351678ae3
-ä
-Zecommerce/src/test/java/br/com/compassuol/pb/challenge/ecommerce/entities/PaymentTest.java,c\b\cb37e61bb2163ea1a38a5faf82089e5986eed4eb
-í
-becommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/controller/PaymentController.java,7\a\7a4f8dfae04d031116145f201b59eb61b084c2e1
 í
 becommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/controller/ProductController.java,9\3\932411e6dd39ed6f329023ce2f4ce556413a77a3
 Ü
 Vecommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/entities/Product.java,0\7\079dff8dfe05852591e7ff2ac67a55eb94bb346d
-ç
-]ecommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/services/PaymentService.java,f\5\f539ff997c5369f17881bf281831e397da5e1d1f
 ö
 jecommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/exceptions/CustomerNotFoundException.java,a\f\af303b1101f4364d269f6c44648e5928932c3d42
 Ñ

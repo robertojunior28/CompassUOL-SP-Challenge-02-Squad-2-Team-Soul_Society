@@ -26,7 +26,7 @@ class OrderTest {
 
     @Test
     void setCustomer() {
-        Customer customer = new Customer("Customer", "633.459.650-03", "customer@gmail.com");
+        var customer = new Customer("Customer", "633.459.650-03", "customer@gmail.com");
         order.setCustomer(customer);
         assertEquals(customer, order.getCustomer());
     }
@@ -44,9 +44,9 @@ class OrderTest {
     }
     @Test
     void constructor(){
-        Customer customer = new Customer("Customer", "633.459.650-03", "customer@gmail.com");
-        Integer customerId = customer.getCustomerId();
-        Order newOrder = new Order(customerId);
+        var customer = new Customer("Customer", "633.459.650-03", "customer@gmail.com");
+        var customerId = customer.getCustomerId();
+        var newOrder = new Order(customerId);
         newOrder.setCustomer(customer);
 
         assertEquals(customer.getCustomerId(), newOrder.getCustomer().getCustomerId());
