@@ -2,6 +2,7 @@ package br.com.compassuol.pb.challenge.ecommerce.exceptions.handler;
 
 import br.com.compassuol.pb.challenge.ecommerce.exceptions.ApiExceptionResponse;
 import br.com.compassuol.pb.challenge.ecommerce.exceptions.CustomerNotFoundException;
+import br.com.compassuol.pb.challenge.ecommerce.exceptions.PaymentNotFoundException;
 import br.com.compassuol.pb.challenge.ecommerce.exceptions.ProductNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -24,13 +25,8 @@ import java.util.List;
 @ControllerAdvice
 public class EcommerceExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(ProductNotFoundException.class)
-    public ResponseEntity<Object> handleCustomerNotFoundException(ProductNotFoundException exception) {
-        return createResponse(HttpStatus.NOT_FOUND, exception.getMessage(), Collections.singletonList(exception.getMessage()));
-    }
-
-    @ExceptionHandler(CustomerNotFoundException.class)
-    public ResponseEntity<Object> handleInvalidEmailException(CustomerNotFoundException exception) {
+    @ExceptionHandler({ProductNotFoundException.class, CustomerNotFoundException.class, PaymentNotFoundException.class})
+    public ResponseEntity<Object> handleCustomerNotFoundException(RuntimeException exception) {
         return createResponse(HttpStatus.NOT_FOUND, exception.getMessage(), Collections.singletonList(exception.getMessage()));
     }
 
