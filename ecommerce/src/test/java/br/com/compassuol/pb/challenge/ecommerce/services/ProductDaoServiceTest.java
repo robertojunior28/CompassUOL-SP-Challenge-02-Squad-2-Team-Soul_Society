@@ -23,7 +23,7 @@ class ProductDaoServiceTest {
     private ProductRepository productRepo;
 
     @InjectMocks
-    private ProductDaoService productDaoService;
+    private ProductService productService;
 
     @BeforeEach
     void setUp() {
@@ -38,7 +38,7 @@ class ProductDaoServiceTest {
 
         when(productRepo.findAll()).thenReturn(allProductsExpected);
 
-        List<Product> theProducts = productDaoService.findAll();
+        List<Product> theProducts = productService.findAll();
 
         assertEquals(allProductsExpected.size(), theProducts.size());
         assertTrue(theProducts.containsAll(allProductsExpected));
@@ -50,7 +50,7 @@ class ProductDaoServiceTest {
         Product product1 = new Product(1, "Product 1", BigDecimal.valueOf(10.0), "Description 1");
         when(productRepo.save(product1)).thenReturn(product1);
 
-        Product productSaved = productDaoService.save(product1);
+        Product productSaved = productService.save(product1);
 
         assertNotNull(productSaved);
         assertEquals(product1.getName(), productSaved.getName());
@@ -67,7 +67,7 @@ class ProductDaoServiceTest {
 
         when(productRepo.findById(id)).thenReturn(Optional.of(product1));
 
-        Product foundedProduct = productDaoService.findById(id);
+        Product foundedProduct = productService.findById(id);
 
         assertNotNull(foundedProduct);
         assertEquals(id, foundedProduct.getProductId());
@@ -82,7 +82,7 @@ class ProductDaoServiceTest {
         Integer id = 444;
         when(productRepo.findById(id)).thenReturn(Optional.empty());
 
-        assertThrows(NoSuchElementException.class, () -> productDaoService.findById(id));
+        assertThrows(NoSuchElementException.class, () -> productService.findById(id));
         verify(productRepo, times(1)).findById(id);
 
     }
