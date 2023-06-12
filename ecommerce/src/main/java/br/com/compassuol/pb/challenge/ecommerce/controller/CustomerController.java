@@ -1,39 +1,41 @@
 package br.com.compassuol.pb.challenge.ecommerce.controller;
 
 import br.com.compassuol.pb.challenge.ecommerce.entities.Customer;
-import br.com.compassuol.pb.challenge.ecommerce.services.CustomerDaoService;
+import br.com.compassuol.pb.challenge.ecommerce.services.CustomerService;
+import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Optional;
 
 @RestController
+@RequestMapping("/customers")
 public class CustomerController {
 
+    private CustomerService service;
+
     @Autowired
-    private CustomerDaoService service;
+    public CustomerController(CustomerService service){
+        this.service=service;
+    }
 
 
-    @GetMapping("/v1/products/{id}")
-    public Optional<Customer> retrieveCustomerById(@PathVariable Integer id){
+    @GetMapping("/{id}")
+    public Customer retrieveCustomerById(@PathVariable Integer id){
         return service.findById(id);
     }
     
-    @PostMapping("v1/customers")
+    @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Optional<Customer> createCustomer(@RequestBody Customer customer){
+    @Transactional
+    public Customer createCustomer(@Valid @RequestBody Customer customer){
         return service.save(customer);
     }
 
-    @PutMapping("/v1/customers/{id}")
-    public Optional<Customer> updateCustomer(@PathVariable Integer id, @RequestBody Customer customer ){
-        var customerOptional = service.findById(id);
-        if(customerOptional.isEmpty()){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
-        return service.save(customer);
+    @PutMapping("/{id}")
+    @Transactional
+    public Customer updateCustomer(@PathVariable Integer id, @Valid @RequestBody Customer customer ){
+        return service.updateById(id, customer);
     }
-
 }

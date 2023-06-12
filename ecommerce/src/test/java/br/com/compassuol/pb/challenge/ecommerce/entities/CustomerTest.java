@@ -1,15 +1,13 @@
 package br.com.compassuol.pb.challenge.ecommerce.entities;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
- @DataJpaTest
- class CustomersTest {
+class CustomerTest {
 
      @Test
-     public void ValidCustomer(){
+     public void testValidCustomer(){
          Customer customer = new Customer();
          customer.setName("Customer A");
          customer.setCpf("000.000.000-00");
@@ -27,5 +25,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
          assertEquals("000.000.000-00", cpf);
          assertEquals("estagio@compass.com", email);
          assertTrue(active);
+     }
+
+     @Test
+     public void testConstructor(){
+         Customer customer = new Customer("Customer", "633.459.650-03", "customer@gmail.com");
+         customer.setCustomerId(1);
+
+         assertEquals(1, customer.getCustomerId());
+         assertEquals("Customer", customer.getName());
+         assertEquals("633.459.650-03", customer.getCpf());
+         assertEquals("customer@gmail.com", customer.getEmail());
+         assertEquals(true, customer.getActive());
      }
 }

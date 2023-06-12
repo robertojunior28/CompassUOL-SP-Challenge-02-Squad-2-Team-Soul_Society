@@ -1,15 +1,9 @@
 package br.com.compassuol.pb.challenge.ecommerce.entities;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-
-
-import javax.xml.validation.Validator;
-
 import java.math.BigDecimal;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DataJpaTest
 class ProductTest {
@@ -23,5 +17,12 @@ class ProductTest {
 
         System.out.println(product.getProductId());
 
+        String name = product.getName();
+        BigDecimal price = product.getPrice();
+        String description = product.getDescription();
+
+        assertEquals("Product A", name);
+        assertEquals(9.99, price);
+        assertEquals("Description A", description);
     }
 }

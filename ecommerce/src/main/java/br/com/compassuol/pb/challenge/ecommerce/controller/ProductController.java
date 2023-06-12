@@ -1,61 +1,76 @@
 package br.com.compassuol.pb.challenge.ecommerce.controller;
 
 import br.com.compassuol.pb.challenge.ecommerce.entities.Product;
-import br.com.compassuol.pb.challenge.ecommerce.services.ProductDaoService;
-import org.springframework.http.HttpStatus;
+import br.com.compassuol.pb.challenge.ecommerce.exceptions.ProductNotFoundException;
+import br.com.compassuol.pb.challenge.ecommerce.repository.ProductRepository;
+import br.com.compassuol.pb.challenge.ecommerce.services.ProductService;
+import jakarta.transaction.Transactional;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import org.springframework.web.server.ResponseStatusException;
+import org.springframework.hateoas.EntityModel;
+
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
+@RequestMapping("/products")
 public class ProductController {
 
-    private final ProductDaoService service;
+    private final ProductRepository productRepository;
 
-    public ProductController(ProductDaoService service) {
+    private final ProductService service;
+
+    public ProductController(ProductRepository productRepository, ProductService service) {
+        this.productRepository = productRepository;
         this.service = service;
     }
 
     //Get /v1/products
-    @GetMapping("/v1/products")
+    @GetMapping
     public List<Product> retrieveAllProducts() {
         return service.findAll();
     }
 
-    @GetMapping("/v1/products/{id}")
-    public Product retrieveProductById(@PathVariable Integer id){
-        return service.findById(id);
-    }
+    @GetMapping("/{id}")
+    public EntityModel<Product> retrieveProductById(@PathVariable Integer id) {
+        Optional<Product> product = productRepository.findById(id);
 
-    @PutMapping("/v1/products/{id}")
-    public Product updateProduct(@PathVariable Integer id, @RequestBody Product updatedProduct){
-        Product existingProduct = service.findById(id);
-
-        if (existingProduct == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found");
-
+        if (product.isEmpty()) {
+            throw new ProductNotFoundException(id);
         }
 
-        existingProduct.setName(updatedProduct.getName());
-        existingProduct.setPrice(updatedProduct.getPrice());
-        existingProduct.setDescription(updatedProduct.getDescription());
+        EntityModel<Product> entityModel = EntityModel.of(product.get());
 
+        WebMvcLinkBuilder link = linkTo(methodOn(this.getClass()).retrieveAllProducts());
+        entityModel.add(link.withRel("all-users"));
 
-        return service.save(existingProduct);
+        return entityModel;
     }
 
-    @DeleteMapping("/v1/products/{id}")
-    public void deleteUser(@PathVariable int id) {
+
+    @PutMapping("/{id}")
+    @Transactional
+    public Product updateProduct(@PathVariable Integer id, @Valid @RequestBody Product product){
+        return service.updateById(id, product);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void deleteProduct(@PathVariable int id) {
         service.deleteById(id);
     }
 
-    @PostMapping("/v1/products")
-    public ResponseEntity<Product> createUser(@Valid @RequestBody Product product) {
+    @PostMapping
+    @Transactional
+    public ResponseEntity<Product> createProduct(@Valid @RequestBody Product product) {
         Product savedProduct = service.save(product);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
