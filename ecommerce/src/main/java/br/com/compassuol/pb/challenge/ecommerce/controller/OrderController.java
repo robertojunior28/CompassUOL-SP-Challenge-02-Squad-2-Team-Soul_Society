@@ -2,6 +2,8 @@ package br.com.compassuol.pb.challenge.ecommerce.controller;
 
 import br.com.compassuol.pb.challenge.ecommerce.entities.Customer;
 import br.com.compassuol.pb.challenge.ecommerce.entities.Order;
+import br.com.compassuol.pb.challenge.ecommerce.enums.OrderStatus;
+import br.com.compassuol.pb.challenge.ecommerce.services.CustomerService;
 import br.com.compassuol.pb.challenge.ecommerce.services.OrderService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -22,10 +25,12 @@ import java.util.List;
 public class OrderController {
 
     private OrderService service;
+    private CustomerService customerService;
 
     @Autowired
-    public OrderController(OrderService service) {
+    public OrderController(OrderService service, CustomerService customerService) {
         this.service = service;
+        this.customerService = customerService;
     }
 
     @GetMapping
@@ -36,9 +41,6 @@ public class OrderController {
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     @Transactional
-//    public Order createOrder(@RequestBody Order order) {
-//        return service.save(order);
-//    }
     public ResponseEntity<Order> createOrder(@RequestBody Order order){
         Order savedOrder = service.save(order);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
@@ -48,9 +50,9 @@ public class OrderController {
         return  ResponseEntity.created(location).body(savedOrder);
     }
 
-    @GetMapping("/{customer}")
-    public List<Order> retrieveAllOrdersByCustumer(Customer customer) {
-        return service.findAllByCustomerId(customer);
+    @GetMapping("/customers/{customerId}")
+    public List<Order> retrieveAllOrdersByCustomer(@PathVariable Integer customerId) {
+        return service.findAllByCustomer(customerId);
     }
 
 }

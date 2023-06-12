@@ -7,7 +7,6 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 
 @RestController
@@ -36,9 +35,7 @@ public class CustomerController {
 
     @PutMapping("/{id}")
     @Transactional
-
     public Customer updateCustomer(@PathVariable Integer id, @Valid @RequestBody Customer customer ){
         return service.updateById(id, customer);
     }
-
 }
