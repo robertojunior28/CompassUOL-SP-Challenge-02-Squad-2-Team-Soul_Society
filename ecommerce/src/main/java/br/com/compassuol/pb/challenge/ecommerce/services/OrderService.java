@@ -43,7 +43,7 @@ public class OrderService {
     public List<Order> findAllByCustomer(Integer customerId){
         Optional<Customer> customer = customerRepository.findById(customerId);
         if(customer.isEmpty()){
-            throw new CustomerNotFoundException("Customer not found with ID:" + customerId);
+            throw new CustomerNotFoundException(customerId);
         }
         return orderRepository.findAllByCustomer(customer);
     }

@@ -43,8 +43,9 @@ public class ProductController {
     public EntityModel<Product> retrieveProductById(@PathVariable Integer id) {
         Optional<Product> product = productRepository.findById(id);
 
-        if (product.isEmpty())
-            throw new ProductNotFoundException("id:" + id);
+        if (product.isEmpty()) {
+            throw new ProductNotFoundException(id);
+        }
 
         EntityModel<Product> entityModel = EntityModel.of(product.get());
 
