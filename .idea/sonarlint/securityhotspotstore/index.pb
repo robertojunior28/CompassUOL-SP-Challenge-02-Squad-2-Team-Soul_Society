@@ -9,8 +9,6 @@ becommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/repository/Pay
 becommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/repository/ProductRepository.java,4\e\4e5cea7350b4a64adeb0623e6b2b7b8d15608ac9
 á
 Wecommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/enums/OrderStatus.java,a\c\acc6518bf6cbeb66ad16b3a8a9a740cec50b6d57
-ô
-iecommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/exceptions/ProductNotFoundException.java,5\3\532a15179f70f49b173927f0898396ff676d311a
 ê
 `ecommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/repository/OrderRepository.java,9\8\98330a51594df817442fae39a4efef3583f0e4dd
 â
