@@ -27,10 +27,7 @@ class ProductServiceTest {
     @InjectMocks
     private ProductService productService;
 
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.openMocks(this);
-    }
+
 
     @Test
     void testFindAll(){

@@ -22,7 +22,7 @@ import java.util.Collections;
 import java.util.List;
 
 @ControllerAdvice
-public class ProductExceptionHandler extends ResponseEntityExceptionHandler {
+public class EcommerceExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<Object> handleCustomerNotFoundException(ProductNotFoundException exception) {

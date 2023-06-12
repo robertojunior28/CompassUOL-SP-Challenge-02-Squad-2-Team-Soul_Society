@@ -13,7 +13,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.BDDMockito.given;
 
@@ -29,12 +28,12 @@ class OrderControllerTest {
     @Test
     public void createOrder(){
         //given
-        Customer customer = new Customer("Customer", "132.080.480-25", "customer@gmail.com");
-        Order order = new Order(customer.getCustomerId());
+        var customer = new Customer("Customer", "132.080.480-25", "customer@gmail.com");
+        var order = new Order(customer.getCustomerId());
         given(orderService.save(any())).willReturn(order);
 
         //when
-        Order viewOrder = orderController.createOrder(order);
+        var viewOrder = orderController.createOrder(order);
 
         //then
         assertThat(viewOrder).isEqualTo(order);
@@ -43,9 +42,9 @@ class OrderControllerTest {
     @Test
     public void retrieveAllOrders(){
         //given
-        Customer customer = new Customer("Customer", "132.080.480-25", "customer@gmail.com");
-        Order order1 = new Order(customer.getCustomerId());
-        Order order2 = new Order(customer.getCustomerId());
+        var customer = new Customer("Customer", "132.080.480-25", "customer@gmail.com");
+        var order1 = new Order(customer.getCustomerId());
+        var order2 = new Order(customer.getCustomerId());
         List<Order> listOrders = Arrays.asList(order1, order2);
         given(orderService.findAll()).willReturn(listOrders);
 
@@ -59,16 +58,12 @@ class OrderControllerTest {
     @Test
     public void retrievelAllOrdersByCustomer(){
         //given
-        Customer customer = new Customer("Customer", "132.080.480-25", "customer@gmail.com");
-        Order order1 = new Order(customer.getCustomerId());
-        Order order2 = new Order(customer.getCustomerId());
+        var customer = new Customer("Customer", "132.080.480-25", "customer@gmail.com");
+        var order1 = new Order(customer.getCustomerId());
+        var order2 = new Order(customer.getCustomerId());
         List<Order> listOrders = Arrays.asList(order1, order2);
         given(orderService.findAllByCustomer(anyInt())).willReturn(listOrders);
-
-        //when
-        List<Order> viewOrders = orderController.retrieveAllOrdersByCustomer(anyInt());
-
-        //then
+        List<Order> viewOrders = orderController.retrieveAllOrdersByCustomer(customer.getCustomerId());
         assertThat(viewOrders).isEqualTo(listOrders);
     }
 

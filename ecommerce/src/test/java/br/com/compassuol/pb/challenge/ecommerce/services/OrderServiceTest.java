@@ -38,8 +38,8 @@ class OrderServiceTest {
 
     @Test
     void testFindAll() {
-        Order order1 = new Order(1);
-        Order order2 = new Order(1);
+        var order1 = new Order(1);
+        var order2 = new Order(1);
         List<Order> allOrdersExpected = Arrays.asList(order1, order2);
 
         when(orderRepository.findAll()).thenReturn(allOrdersExpected);
@@ -53,18 +53,18 @@ class OrderServiceTest {
 
     @Test
     void testSaveIfCustomerIsPresent() {
-        Integer id = 1;
-        Customer customer = new Customer("Customer", "094.038.120-60", "customer@gmail.com");
+        var id = 1;
+        var customer = new Customer("Customer", "094.038.120-60", "customer@gmail.com");
         customer.setCustomerId(id);
         when(customerRepository.findById(id)).thenReturn(Optional.of(customer));
-        Order order = new Order(customer.getCustomerId());
+        var order = new Order(customer.getCustomerId());
         order.setCustomer(customer);
         order.setDate(order.getDate());
         order.setStatus(Collections.singletonList(OrderStatus.CREATED));
 
         when(orderRepository.save(order)).thenReturn(order);
 
-        Order orderSaved = orderService.save(order);
+        var orderSaved = orderService.save(order);
 
         assertNotNull(orderSaved);
         assertEquals(order.getCustomerId(), orderSaved.getCustomerId());
@@ -75,11 +75,11 @@ class OrderServiceTest {
 
     @Test
     void testFindByCustomerIfCustomerExist() {
-        Order order1 = new Order(1);
-        Order order2 = new Order(1);
+        var order1 = new Order(1);
+        var order2 = new Order(1);
         List<Order> allOrdersExpected = Arrays.asList(order1, order2);
 
-        Customer customer = new Customer("Customer", "094.038.120-60", "customer@gamil.com");
+        var customer = new Customer("Customer", "094.038.120-60", "customer@gamil.com");
         customer.setCustomerId(1);
 
         when(customerRepository.findById(1)).thenReturn(Optional.of(customer));
@@ -97,9 +97,9 @@ class OrderServiceTest {
 
     @Test
     void testFindByCustomerIfCustomerNotExist() {
-        Integer customerId = 1;
-        Order order1 = new Order(customerId);
-        Order order2 = new Order(customerId);
+        var customerId = 1;
+        var order1 = new Order(customerId);
+        var order2 = new Order(customerId);
         List<Order> allOrdersExpected = Arrays.asList(order1, order2);
 
         when(customerRepository.findById(customerId)).thenReturn(Optional.empty());

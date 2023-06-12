@@ -50,6 +50,7 @@ public class Payment {
         this.paymentMethod = paymentMethod;
     }
 
+
     public Date getPaymentDate() {
         return paymentDate;
     }
@@ -66,13 +67,4 @@ public class Payment {
         this.order = order;
     }
 
-    @Override
-    public String toString() {
-        return "Payment{" +
-                "paymentId=" + paymentId +
-                ", paymentMethod=" + paymentMethod +
-                ", paymentDate=" + paymentDate +
-                ", order=" + order +
-                '}';
-    }
 }

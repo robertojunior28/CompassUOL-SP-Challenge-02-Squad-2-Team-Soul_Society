@@ -34,11 +34,11 @@ public class CustomerServiceTest {
 
     @Test
     void testSave(){
-        Customer customer = new Customer("Customer", "094.038.120-60","customer@gmail.com");
+        var customer = new Customer("Customer", "094.038.120-60","customer@gmail.com");
 
         when(customerRepository.save(customer)).thenReturn(customer);
 
-        Customer customerSaved = customerService.save(customer);
+        var customerSaved = customerService.save(customer);
 
         assertNotNull(customerSaved);
         assertEquals(customer.getName(), customerSaved.getName());
@@ -49,12 +49,12 @@ public class CustomerServiceTest {
 
     @Test
     void testFindByIdIfIdExist(){
-        Customer customer = new Customer("Customer", "094.038.120-60","customer@gmail.com");
-        Integer id = customer.getCustomerId();
+        var customer = new Customer("Customer", "094.038.120-60","customer@gmail.com");
+        var id = customer.getCustomerId();
 
         when(customerRepository.findById(id)).thenReturn(Optional.of(customer));
 
-        Customer foundedCustomer = customerService.findById(id);
+        var foundedCustomer = customerService.findById(id);
 
         assertNotNull(foundedCustomer);
         assertEquals(id, foundedCustomer.getCustomerId());
@@ -66,7 +66,7 @@ public class CustomerServiceTest {
 
     @Test
     void testFindByIdIfIdNotExist(){
-        Integer id = 666;
+        var id = 666;
 
         when(customerRepository.findById(id)).thenReturn(Optional.empty());
 
@@ -76,17 +76,17 @@ public class CustomerServiceTest {
 
     @Test
     void testUpdateByIdIfIdExist(){
-        Customer customer = new Customer("Customer", "094.038.120-60","customer@gmail.com");
+        var customer = new Customer("Customer", "094.038.120-60","customer@gmail.com");
 
-        Integer id = customer.getCustomerId();
+        var id = customer.getCustomerId();
 
-        Customer updateCustomer = new Customer("New Customer", "442.128.860-81","customer@outlook.com");
+        var updateCustomer = new Customer("New Customer", "442.128.860-81","customer@outlook.com");
         updateCustomer.setCustomerId(id);
 
         when(customerRepository.findById(id)).thenReturn(Optional.of(customer));
         when(customerRepository.save(customer)).thenReturn(customer);
 
-        Customer result = customerService.updateById(id,updateCustomer);
+        var result = customerService.updateById(id,updateCustomer);
 
         assertNotNull(result);
         assertEquals(id, result.getCustomerId());
@@ -99,8 +99,8 @@ public class CustomerServiceTest {
 
     @Test
     void testUpdateByIdIfIdNotExist(){
-        Integer id = 999;
-        Customer customer = new Customer("Customer", "094.038.120-60","customer@gmail.com");
+        var id = 999;
+        var customer = new Customer("Customer", "094.038.120-60","customer@gmail.com");
 
         when(customerRepository.findById(id)).thenReturn(Optional.empty());
 

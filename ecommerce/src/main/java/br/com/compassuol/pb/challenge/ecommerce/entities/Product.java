@@ -2,9 +2,13 @@ package br.com.compassuol.pb.challenge.ecommerce.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
+@Getter
+@Setter
 @Entity
 public class Product {
 
@@ -13,11 +17,9 @@ public class Product {
     @Column(name = "product_id", nullable = false, unique = true)
     private Integer productId;
 
-
     @Column(name = "product_name", nullable = false)
     @Size(min = 3)
     private String name;
-
 
     @Column(name = "product_price", nullable = false)
     private BigDecimal price;
@@ -34,39 +36,6 @@ public class Product {
     }
 
     public Product() {
-
-    }
-
-    public Integer getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Integer productId) {
-        this.productId = productId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     @Override
