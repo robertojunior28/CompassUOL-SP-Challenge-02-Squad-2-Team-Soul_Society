@@ -15,13 +15,7 @@ iecommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/exceptions/Pro
 `ecommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/repository/OrderRepository.java,9\8\98330a51594df817442fae39a4efef3583f0e4dd
 ‰
 Yecommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/enums/PaymentMethod.java,a\2\a27e2c8d32f3368b04ee62559f26144351678ae3
-’
-becommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/controller/ProductController.java,9\3\932411e6dd39ed6f329023ce2f4ce556413a77a3
 †
 Vecommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/entities/Product.java,0\7\079dff8dfe05852591e7ff2ac67a55eb94bb346d
-š
-jecommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/exceptions/CustomerNotFoundException.java,a\f\af303b1101f4364d269f6c44648e5928932c3d42
 „
 Tecommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/entities/Order.java,b\d\bda76fab462cf1305f3282eac16301511ef12cec
-‡
-Wecommerce/src/main/java/br/com/compassuol/pb/challenge/ecommerce/entities/Customer.java,5\e\5e6fa40330bed81209689d5a96fc1bfdba150c04
