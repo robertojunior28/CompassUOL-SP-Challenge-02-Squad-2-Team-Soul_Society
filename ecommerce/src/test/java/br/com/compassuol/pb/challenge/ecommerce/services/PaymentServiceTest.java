@@ -29,13 +29,12 @@ class PaymentServiceTest {
     }
 
     @Test
-    void save() {
+    void testSave() {
         var payment = new Payment(PaymentMethod.CASH, new Order());
         when(paymentRepository.save(payment)).thenReturn(payment);
 
         Payment paymentSaved = paymentService.save(payment);
         assertNotNull(paymentSaved);
         assertEquals(PaymentMethod.CASH, paymentSaved.getPaymentMethod());
-
     }
 }

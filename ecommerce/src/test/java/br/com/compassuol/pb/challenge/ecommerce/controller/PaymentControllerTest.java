@@ -31,9 +31,18 @@ class PaymentControllerTest {
     }
 
     @Test
-    void createPayment() {
+    void testAttributes() {
+        var payment = new Payment(PaymentMethod.CASH, new Order());
+        assertEquals(PaymentMethod.CASH, payment.getPaymentMethod());
+        assertNotNull(payment.getOrder());
+        assertNotNull(payment.getPaymentDate());
+    }
+
+    @Test
+    void testCreatePayment() {
         var payment = new Payment(PaymentMethod.CASH, new Order());
         var paymentCreate = when(paymentController.createPayment(payment)).thenReturn(payment);
         assertNotNull(paymentCreate);
+        assertEquals(PaymentMethod.CASH, payment.getPaymentMethod());
     }
 }
