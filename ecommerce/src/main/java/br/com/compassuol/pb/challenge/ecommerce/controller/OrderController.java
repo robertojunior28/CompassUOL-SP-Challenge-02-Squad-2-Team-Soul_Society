@@ -41,13 +41,8 @@ public class OrderController {
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     @Transactional
-    public ResponseEntity<Order> createOrder(@RequestBody Order order){
-        Order savedOrder = service.save(order);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(savedOrder.getId())
-                .toUri();
-        return  ResponseEntity.created(location).body(savedOrder);
+    public Order createOrder(@RequestBody Order order){
+        return service.save(order);
     }
 
     @GetMapping("/customers/{customerId}")
