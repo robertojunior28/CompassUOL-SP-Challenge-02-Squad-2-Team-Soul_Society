@@ -1,29 +1,30 @@
 package br.com.compassuol.pb.challenge.ecommerce.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
+@Getter
+@Setter
 @Entity
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "product_id", nullable = false, unique = true)
     private Integer productId;
 
-    @NotNull
+    @Column(name = "product_name", nullable = false)
     @Size(min = 3)
     private String name;
 
-    @NotNull
+    @Column(name = "product_price", nullable = false)
     private BigDecimal price;
 
-    @NotNull
+    @Column(name = "product_description", nullable = false)
     @Size(min = 3)
     private String description;
 
@@ -34,36 +35,7 @@ public class Product {
         this.description = description;
     }
 
-    public Integer getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Integer productId) {
-        this.productId = productId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public Product() {
     }
 
     @Override
