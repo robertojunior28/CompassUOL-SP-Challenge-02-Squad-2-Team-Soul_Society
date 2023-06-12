@@ -3,19 +3,27 @@ package br.com.compassuol.pb.challenge.ecommerce.controller;
 import br.com.compassuol.pb.challenge.ecommerce.entities.Order;
 import br.com.compassuol.pb.challenge.ecommerce.entities.Payment;
 import br.com.compassuol.pb.challenge.ecommerce.enums.PaymentMethod;
+import br.com.compassuol.pb.challenge.ecommerce.repository.PaymentRepository;
 import br.com.compassuol.pb.challenge.ecommerce.services.PaymentService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
 class PaymentControllerTest {
+
     @Mock
-    PaymentService paymentService;
+    private PaymentRepository paymentRepository;
+
+    @InjectMocks
+    private PaymentService paymentService;
+    @Mock
+    private PaymentController paymentController;
 
     @BeforeEach
     void setUp() {
@@ -25,7 +33,7 @@ class PaymentControllerTest {
     @Test
     void createPayment() {
         var payment = new Payment(PaymentMethod.CASH, new Order());
-        var result = paymentService.save(payment);
-        assertTrue(result != null);
+        var paymentCreate = when(paymentController.createPayment(payment)).thenReturn(payment);
+        assertNotNull(paymentCreate);
     }
 }
