@@ -1,19 +1,31 @@
 package br.com.compassuol.pb.challenge.ecommerce.controller;
 
+import br.com.compassuol.pb.challenge.ecommerce.services.CustomerService;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class CustomerControllerTest {
-    @Autowired
-    private TestRestTemplate restTemplate;
+@ExtendWith(MockitoExtension.class)
+class CustomerControllerTest {
+
+    @Mock
+    CustomerService customerService;
+
+    @InjectMocks
+    CustomerController customerController;
 
     @Test
-    public void testValidCustomerController() {
+    public void createCustomer(){
+        //given
 
+
+        //when
+
+        //then
     }
 
 }
