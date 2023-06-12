@@ -22,7 +22,7 @@ public class CustomerService {
 
     public Customer findById(Integer id){
         return customerRepository.findById(id)
-                .orElseThrow(() -> new CustomerNotFoundException("Customer not found with ID: " + id));
+                .orElseThrow(() -> new CustomerNotFoundException(id));
     }
 
     public Customer save(Customer customer){
@@ -51,6 +51,6 @@ public class CustomerService {
             return customerRepository.save(updatedCustomer);
         }
 
-        throw new CustomerNotFoundException("Customer not found with ID: " + id);
+        throw new CustomerNotFoundException(id);
     }
 }
