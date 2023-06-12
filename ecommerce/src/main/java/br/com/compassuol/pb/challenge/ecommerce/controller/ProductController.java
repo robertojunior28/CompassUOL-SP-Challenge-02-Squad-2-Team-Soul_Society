@@ -1,19 +1,15 @@
 package br.com.compassuol.pb.challenge.ecommerce.controller;
 
-import br.com.compassuol.pb.challenge.ecommerce.entities.Customer;
 import br.com.compassuol.pb.challenge.ecommerce.entities.Product;
-
 import br.com.compassuol.pb.challenge.ecommerce.exceptions.ProductNotFoundException;
 import br.com.compassuol.pb.challenge.ecommerce.repository.ProductRepository;
 import br.com.compassuol.pb.challenge.ecommerce.services.ProductService;
 import jakarta.transaction.Transactional;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
-import org.springframework.http.HttpStatus;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import org.springframework.web.server.ResponseStatusException;
 import org.springframework.hateoas.EntityModel;
 
 

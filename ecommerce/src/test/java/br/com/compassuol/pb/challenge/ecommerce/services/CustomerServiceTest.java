@@ -31,6 +31,7 @@ public class CustomerServiceTest {
         MockitoAnnotations.openMocks(this);
     }
 
+
     @Test
     void testSave(){
         Customer customer = new Customer("Customer", "094.038.120-60","customer@gmail.com");

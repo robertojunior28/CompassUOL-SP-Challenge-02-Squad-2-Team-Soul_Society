@@ -2,6 +2,7 @@ package br.com.compassuol.pb.challenge.ecommerce.services;
 
 import br.com.compassuol.pb.challenge.ecommerce.entities.Payment;
 import br.com.compassuol.pb.challenge.ecommerce.repository.PaymentRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ public class PaymentService {
     public PaymentService(PaymentRepository paymentRepository) {
         this.paymentRepository = paymentRepository;
     }
-
+    @Transactional
     public Payment save(Payment payment) {
         return paymentRepository.save(payment);
     }

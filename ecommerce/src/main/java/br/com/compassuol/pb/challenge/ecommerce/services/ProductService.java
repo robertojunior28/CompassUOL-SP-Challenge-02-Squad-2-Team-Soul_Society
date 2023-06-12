@@ -1,6 +1,5 @@
 package br.com.compassuol.pb.challenge.ecommerce.services;
 
-import br.com.compassuol.pb.challenge.ecommerce.entities.Customer;
 import br.com.compassuol.pb.challenge.ecommerce.entities.Product;
 import br.com.compassuol.pb.challenge.ecommerce.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
