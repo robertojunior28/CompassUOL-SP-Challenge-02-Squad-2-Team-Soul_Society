@@ -8,7 +8,7 @@ class CustomerTest {
 
      @Test
      public void testValidCustomer(){
-         Customer customer = new Customer();
+         var customer = new Customer();
          customer.setName("Customer A");
          customer.setCpf("000.000.000-00");
          customer.setEmail("estagio@compass.com");
@@ -29,7 +29,7 @@ class CustomerTest {
 
      @Test
      public void testConstructor(){
-         Customer customer = new Customer("Customer", "633.459.650-03", "customer@gmail.com");
+         var customer = new Customer("Customer", "633.459.650-03", "customer@gmail.com");
          customer.setCustomerId(1);
 
          assertEquals(1, customer.getCustomerId());
